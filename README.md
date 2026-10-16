@@ -198,7 +198,12 @@ For the linear score map F = [W A_t, W b_t + d], centred over classes and scaled
 s contributes the squared error of F against centred one-hot labels, in closed form from the stored second moment B_s and
 label cross-moment K_s of [φ, 1]. The training loss is
 
-$$\mathcal L_t=\begin{cases}0.5\,\mathcal L_{\mathrm{SC}}, & t=1,\\ 0.5\,\mathcal L_{\mathrm{SC}}+\dfrac{1}{t-1}\displaystyle\sum_{s<t}\Big(\mathrm{tr}\big(\tilde F B_s \tilde F^{\top}\big)-2\langle \tilde F, K_s\rangle_F+1\Big), & t>1.\end{cases}$$
+```math
+\mathcal L_t=\begin{cases}
+  0.5\,\mathcal L_{\mathrm{SC}}, & t=1,\\
+  0.5\,\mathcal L_{\mathrm{SC}}+\dfrac{1}{t-1}\displaystyle\sum_{s<t}\Big(\mathrm{tr}\big(\tilde F B_s \tilde F^{\top}\big)-2\langle \tilde F, K_s\rangle_F+1\Big), & t>1.
+\end{cases}
+```
 
 The OSCL classifier (Yang, Tiomoko, and Wang, ICLR 2023) uses a Gaussian density model over h for domain weights g_s(x), so no
 domain identifier is needed:
