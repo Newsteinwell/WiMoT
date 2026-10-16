@@ -187,39 +187,23 @@ every later domain only the affine adapter (and the projector and the linear map
 arrivals are discarded after their moments are stored. The adapter maps the basis to the representation that the readout
 uses:
 
-```math
-h = A_t\,\phi + b_t
-```
+<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/equations/eq_adapter_dark.png"><img src="assets/equations/eq_adapter_light.png" width="112" alt="h = A_t phi + b_t"></picture></p>
 
 Moments stored in φ coordinates are transported into the current representation by the standard affine moment rule (also
 applied, with estimated maps, in CASTER and DPCR). Here the map is the model's own adapter, so the stored moments follow the model that predicts, under a fixed basis and an affine adapter:
 
-```math
-\mu^{h} = A_t\,\mu^{\phi} + b_t, \qquad \Sigma^{h} = A_t\,\Sigma^{\phi}A_t^{\top}
-```
+<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/equations/eq_transport_dark.png"><img src="assets/equations/eq_transport_light.png" width="301" alt="mu^h = A_t mu^phi + b_t, Sigma^h = A_t Sigma^phi A_t^T"></picture></p>
 
 For the linear score map F = [W A_t, W b_t + d], centred over classes and scaled by its first-domain norm, each stored domain
 s contributes the squared error of F against centred one-hot labels, in closed form from the stored second moment B_s and
-label cross-moment K_s of [φ, 1]. The training loss is defined per domain.
+label cross-moment K_s of [φ, 1]. The training loss is
 
-For the first domain,
-
-```math
-\mathcal L_1=0.5\,\mathcal L_{\mathrm{SC}}
-```
-
-and for each later domain $t>1$,
-
-```math
-\mathcal L_t=0.5\,\mathcal L_{\mathrm{SC}}+\dfrac{1}{t-1}\displaystyle\sum_{s\lt t}\Big(\mathrm{tr}\big(\tilde F B_s \tilde F^{\top}\big)-2\langle \tilde F, K_s\rangle_F+1\Big)
-```
+<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/equations/eq_loss_dark.png"><img src="assets/equations/eq_loss_light.png" width="538" alt="L_t = 0.5 L_SC for t=1; L_t = 0.5 L_SC + (1/(t-1)) sum_{s<t} ( tr(F B_s F^T) - 2<F,K_s>_F + 1 ) for t>1"></picture></p>
 
 The OSCL classifier (Yang, Tiomoko, and Wang, ICLR 2023) uses a Gaussian density model over h for domain weights g_s(x), so no
 domain identifier is needed:
 
-```math
-\hat y(x)=\arg\max_{c}\ \sum_{s\le t} g_s(x)\,p_s(c\mid x)
-```
+<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/equations/eq_readout_dark.png"><img src="assets/equations/eq_readout_light.png" width="272" alt="y(x) = argmax_c sum_{s<=t} g_s(x) p_s(c|x)"></picture></p>
 
 ## Installation
 
