@@ -187,12 +187,16 @@ every later domain only the affine adapter (and the projector and the linear map
 arrivals are discarded after their moments are stored. The adapter maps the basis to the representation that the readout
 uses:
 
-$$h = A_t\,\phi + b_t$$
+```math
+h = A_t\,\phi + b_t
+```
 
 Moments stored in φ coordinates are transported into the current representation by the standard affine moment rule (also
 applied, with estimated maps, in CASTER and DPCR). Here the map is the model's own adapter, so the stored moments follow the model that predicts, under a fixed basis and an affine adapter:
 
-$$\mu^{h} = A_t\,\mu^{\phi} + b_t, \qquad \Sigma^{h} = A_t\,\Sigma^{\phi}A_t^{\top}$$
+```math
+\mu^{h} = A_t\,\mu^{\phi} + b_t, \qquad \Sigma^{h} = A_t\,\Sigma^{\phi}A_t^{\top}
+```
 
 For the linear score map F = [W A_t, W b_t + d], centred over classes and scaled by its first-domain norm, each stored domain
 s contributes the squared error of F against centred one-hot labels, in closed form from the stored second moment B_s and
@@ -200,16 +204,22 @@ label cross-moment K_s of [φ, 1]. The training loss is defined per domain.
 
 For the first domain,
 
-$$\mathcal L_1=0.5\,\mathcal L_{\mathrm{SC}}$$
+```math
+\mathcal L_1=0.5\,\mathcal L_{\mathrm{SC}}
+```
 
 and for each later domain $t>1$,
 
-$$\mathcal L_t=0.5\,\mathcal L_{\mathrm{SC}}+\dfrac{1}{t-1}\displaystyle\sum_{s<t}\Big(\mathrm{tr}\big(\tilde F B_s \tilde F^{\top}\big)-2\langle \tilde F, K_s\rangle_F+1\Big)$$
+```math
+\mathcal L_t=0.5\,\mathcal L_{\mathrm{SC}}+\dfrac{1}{t-1}\displaystyle\sum_{s\lt t}\Big(\mathrm{tr}\big(\tilde F B_s \tilde F^{\top}\big)-2\langle \tilde F, K_s\rangle_F+1\Big)
+```
 
 The OSCL classifier (Yang, Tiomoko, and Wang, ICLR 2023) uses a Gaussian density model over h for domain weights g_s(x), so no
 domain identifier is needed:
 
-$$\hat y(x)=\arg\max_{c}\ \sum_{s\le t} g_s(x)\,p_s(c\mid x)$$
+```math
+\hat y(x)=\arg\max_{c}\ \sum_{s\le t} g_s(x)\,p_s(c\mid x)
+```
 
 ## Installation
 

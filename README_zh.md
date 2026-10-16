@@ -129,25 +129,35 @@ WiMANS 上 OSCL 与 LDA 的配对差为 +0.74 ± 1.39 pp（OSCL 在三个种子�
 
 **公式。** 首个域用 MantisV2 特征上的语义分支、首域 PCA 捷径和固定随机的幅度分支，以监督对比损失训练后冻结为 512 维基空间 φ。之后每个域只训练仿射适配器（以及投影头和历史损失所用的线性映射 W），保存各类别的矩后丢弃新到达的样本。适配器把基空间映射到读出所用的表示：
 
-$$h = A_t\,\phi + b_t$$
+```math
+h = A_t\,\phi + b_t
+```
 
 φ 坐标下保存的矩由标准的仿射矩规则传输到当前表示（CASTER 和 DPCR 也以估计得到的映射使用它）。此处的映射就是模型自身的适配器，因此在固定基和仿射适配器下，存储的矩随实际用于预测的模型变化：
 
-$$\mu^{h} = A_t\,\mu^{\phi} + b_t, \qquad \Sigma^{h} = A_t\,\Sigma^{\phi}A_t^{\top}$$
+```math
+\mu^{h} = A_t\,\mu^{\phi} + b_t, \qquad \Sigma^{h} = A_t\,\Sigma^{\phi}A_t^{\top}
+```
 
 对线性评分映射 F = [W A_t, W b_t + d]（类中心化并按首域范数缩放），每个已存储的域 s 以闭式给出 F 相对类中心化 one-hot 标签的平方误差，仅用到存储的二阶矩 B_s 和 [φ, 1] 的标签交叉矩 K_s。训练损失为
 
 第一个域：
 
-$$\mathcal L_1=0.5\,\mathcal L_{\mathrm{SC}}$$
+```math
+\mathcal L_1=0.5\,\mathcal L_{\mathrm{SC}}
+```
 
 之后每个域 $t>1$：
 
-$$\mathcal L_t=0.5\,\mathcal L_{\mathrm{SC}}+\dfrac{1}{t-1}\displaystyle\sum_{s<t}\Big(\mathrm{tr}\big(\tilde F B_s \tilde F^{\top}\big)-2\langle \tilde F, K_s\rangle_F+1\Big)$$
+```math
+\mathcal L_t=0.5\,\mathcal L_{\mathrm{SC}}+\dfrac{1}{t-1}\displaystyle\sum_{s\lt t}\Big(\mathrm{tr}\big(\tilde F B_s \tilde F^{\top}\big)-2\langle \tilde F, K_s\rangle_F+1\Big)
+```
 
 OSCL 分类器（Yang、Tiomoko 和 Wang，ICLR 2023）用 h 上的高斯密度模型给出域权重 g_s(x)，因此不需要域 ID：
 
-$$\hat y(x)=\arg\max_{c}\ \sum_{s\le t} g_s(x)\,p_s(c\mid x)$$
+```math
+\hat y(x)=\arg\max_{c}\ \sum_{s\le t} g_s(x)\,p_s(c\mid x)
+```
 
 ## 安装与冒烟测试
 
