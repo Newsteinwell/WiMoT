@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the article below."
+title: "WiMoT: Replay-Free Continual Wi-Fi Sensing via Moment Transport: code"
+type: software
+license: MIT
+repository-code: "https://github.com/Newsteinwell/WiMoT"
+version: "1.0.0"
+authors:
+  - family-names: "Yang"
+    given-names: "Chunchun"
+  - family-names: "Cao"
+    given-names: "Yang"
+  - family-names: "Chen"
+    given-names: "Zhitang"
+preferred-citation:
+  type: article
+  title: "WiMoT: Replay-Free Continual Wi-Fi Sensing via Moment Transport"
+  authors:
+    - family-names: "Yang"
+      given-names: "Chunchun"
+    - family-names: "Cao"
+      given-names: "Yang"
+    - family-names: "Chen"
+      given-names: "Zhitang"
+  journal: "IEEE Internet of Things Journal"
+  year: 2026
+  status: "submitted"

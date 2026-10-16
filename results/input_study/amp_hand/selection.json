@@ -1,0 +1,227 @@
+{
+  "tag": "amp_hand",
+  "rule": "Maximum mean seed-42 validation AFA over 3DO and WiMANS (first maximum on ties); the selected value is then used for every seed, order, stream and label budget.",
+  "selected": {
+    "classic/ft": {
+      "coefficient": null,
+      "scores": null,
+      "note": "single candidate"
+    },
+    "classic/er": {
+      "coefficient": null,
+      "scores": null,
+      "note": "single candidate"
+    },
+    "classic/ewc": {
+      "coefficient": 10000.0,
+      "candidates": [
+        1.0,
+        100.0,
+        10000.0
+      ],
+      "scores": [
+        0.5577160493827161,
+        0.5605246913580247,
+        0.5724382716049383
+      ]
+    },
+    "classic/ewc_er": {
+      "coefficient": 10000.0,
+      "candidates": [
+        1.0,
+        100.0,
+        10000.0
+      ],
+      "scores": [
+        0.6450308641975309,
+        0.6465740740740741,
+        0.6576543209876542
+      ]
+    },
+    "classic/si": {
+      "coefficient": 10.0,
+      "candidates": [
+        0.1,
+        1.0,
+        10.0
+      ],
+      "scores": [
+        0.563179012345679,
+        0.5632716049382717,
+        0.5858641975308642
+      ]
+    },
+    "classic/si_er": {
+      "coefficient": 1.0,
+      "candidates": [
+        0.1,
+        1.0,
+        10.0
+      ],
+      "scores": [
+        0.6474074074074074,
+        0.6492283950617284,
+        0.6337345679012345
+      ]
+    },
+    "classic/mas": {
+      "coefficient": 1.0,
+      "candidates": [
+        0.1,
+        1.0,
+        10.0
+      ],
+      "scores": [
+        0.6005246913580248,
+        0.6043518518518518,
+        0.5441975308641975
+      ]
+    },
+    "classic/mas_er": {
+      "coefficient": 0.1,
+      "candidates": [
+        0.1,
+        1.0,
+        10.0
+      ],
+      "scores": [
+        0.6457407407407407,
+        0.610462962962963,
+        0.5599691358024692
+      ]
+    },
+    "classic/lwf": {
+      "coefficient": 0.5,
+      "candidates": [
+        0.5,
+        1.0,
+        2.0
+      ],
+      "scores": [
+        0.5621913580246914,
+        0.521820987654321,
+        0.5159259259259259
+      ]
+    },
+    "classic/lwf_er": {
+      "coefficient": 0.5,
+      "candidates": [
+        0.5,
+        1.0,
+        2.0
+      ],
+      "scores": [
+        0.6334876543209877,
+        0.5999382716049383,
+        0.5903086419753086
+      ]
+    },
+    "classic/derpp": {
+      "coefficient": null,
+      "scores": null,
+      "note": "single candidate"
+    },
+    "classic/agem": {
+      "coefficient": null,
+      "scores": null,
+      "note": "single candidate"
+    },
+    "wifi/consense": {
+      "coefficient": 1.0,
+      "candidates": [
+        0.01,
+        0.1,
+        1.0
+      ],
+      "scores": [
+        0.5723765432098766,
+        0.5813888888888888,
+        0.5915432098765432
+      ]
+    },
+    "wifi/edgecl": {
+      "coefficient": 0.1,
+      "candidates": [
+        0.01,
+        0.03,
+        0.1
+      ],
+      "scores": [
+        0.6296604938271605,
+        0.6321604938271604,
+        0.6555246913580247
+      ]
+    },
+    "recent/duct": {
+      "coefficient": 0.25,
+      "candidates": [
+        0.1,
+        0.25,
+        0.5
+      ],
+      "scores": [
+        0.5711728395061728,
+        0.6014814814814815,
+        0.5807098765432098
+      ]
+    },
+    "recent/dualcp": {
+      "coefficient": 0.1,
+      "candidates": [
+        0.1,
+        0.5
+      ],
+      "scores": [
+        0.6372839506172839,
+        0.6249382716049383
+      ]
+    },
+    "recent/vanillacp": {
+      "coefficient": 1.0,
+      "scores": null,
+      "note": "single candidate"
+    },
+    "recent/cn_dpm_aligned": {
+      "coefficient": -10.0,
+      "candidates": [
+        -10.0,
+        0.0,
+        10.0
+      ],
+      "scores": [
+        0.6350925925925925,
+        0.6162962962962962,
+        0.615462962962963
+      ]
+    },
+    "recent/duct_er": {
+      "coefficient": 0.1,
+      "candidates": [
+        0.1,
+        0.25,
+        0.5
+      ],
+      "scores": [
+        0.5448456790123457,
+        0.5344135802469137,
+        0.5370370370370371
+      ]
+    },
+    "recent/dualcp_er": {
+      "coefficient": 0.1,
+      "candidates": [
+        0.1,
+        0.5
+      ],
+      "scores": [
+        0.663425925925926,
+        0.6449074074074075
+      ]
+    },
+    "recent/vanillacp_er": {
+      "coefficient": 1.0,
+      "scores": null,
+      "note": "single candidate"
+    }
+  }
+}

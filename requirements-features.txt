@@ -1,0 +1,2 @@
+# Feature extraction with MantisV2, Apache-2.0 (on top of requirements.txt)
+mantis-tsfm==1.1.0

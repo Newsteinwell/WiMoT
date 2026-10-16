@@ -1,0 +1,49 @@
+family,dataset,quantity,name,n_seeds,AFA_mean,AFA_sd,AFR_mean,AFR_sd
+amp512,3do,wimot_amp_full,"WiMoT (amp_full, primary)",3,99.019,0.160,-0.014,0.134
+amp512,3do,strongest_baseline,EWC+ER,3,98.259,0.599,1.069,0.994
+amp512,3do,joint,Joint training (non-continual reference),3,99.093,0.231,,
+amp512,3do,wimot_amp_only,WiMoT (amp_only),3,97.370,0.226,0.306,0.426
+amp_pca,3do,wimot_amp_full,"WiMoT (amp_full, primary)",3,92.380,1.051,1.389,1.919
+amp_pca,3do,strongest_baseline,CN-DPM,3,92.787,0.236,4.444,0.685
+amp_pca,3do,joint,Joint training (non-continual reference),3,96.028,0.111,,
+amp_pca,3do,wimot_amp_only,WiMoT (amp_only),3,83.398,0.058,0.667,0.861
+amp_rp,3do,wimot_amp_full,"WiMoT (amp_full, primary)",3,98.639,0.237,0.097,0.277
+amp_rp,3do,strongest_baseline,SI+ER,3,98.296,0.306,1.625,0.464
+amp_rp,3do,joint,Joint training (non-continual reference),3,99.306,0.056,,
+amp_rp,3do,wimot_amp_only,WiMoT (amp_only),3,97.981,0.140,0.486,0.087
+amp_hand,3do,wimot_amp_full,"WiMoT (amp_full, primary)",3,97.185,0.278,0.583,0.125
+amp_hand,3do,strongest_baseline,EdgeCL,3,95.963,0.239,1.639,0.521
+amp_hand,3do,joint,Joint training (non-continual reference),3,97.444,0.347,,
+amp_hand,3do,wimot_amp_only,WiMoT (amp_only),3,95.722,0.290,0.486,0.244
+amp512,wimans,wimot_amp_full,"WiMoT (amp_full, primary)",3,32.510,2.055,1.698,3.151
+amp512,wimans,strongest_baseline,EdgeCL,3,31.173,2.226,3.858,2.673
+amp512,wimans,joint,Joint training (non-continual reference),3,27.881,0.891,,
+amp512,wimans,wimot_amp_only,WiMoT (amp_only),3,25.823,1.247,-0.617,0.707
+amp_pca,wimans,wimot_amp_full,"WiMoT (amp_full, primary)",3,16.255,1.247,1.389,1.669
+amp_pca,wimans,strongest_baseline,EWC+ER,3,21.091,1.247,-4.012,1.626
+amp_pca,wimans,joint,Joint training (non-continual reference),3,19.650,0.471,,
+amp_pca,wimans,wimot_amp_only,WiMoT (amp_only),3,10.905,1.522,0.926,0.926
+amp_rp,wimans,wimot_amp_full,"WiMoT (amp_full, primary)",3,33.745,0.992,0.309,0.535
+amp_rp,wimans,strongest_baseline,EdgeCL,3,29.938,1.718,4.012,2.088
+amp_rp,wimans,joint,Joint training (non-continual reference),3,30.247,1.718,,
+amp_rp,wimans,wimot_amp_only,WiMoT (amp_only),3,31.276,0.777,0.617,1.069
+amp_hand,wimans,wimot_amp_full,"WiMoT (amp_full, primary)",3,37.243,2.317,3.549,1.626
+amp_hand,wimans,strongest_baseline,DualCP+ER,3,33.745,1.522,0.772,1.414
+amp_hand,wimans,joint,Joint training (non-continual reference),3,32.819,0.777,,
+amp_hand,wimans,wimot_amp_only,WiMoT (amp_only),3,33.642,1.852,0.309,3.937
+amp512,widar,wimot_amp_full,"WiMoT (amp_full, primary)",3,94.000,0.148,0.639,0.481
+amp512,widar,strongest_baseline,VanillaCP+ER,3,60.222,0.148,6.389,0.419
+amp512,widar,joint,Joint training (non-continual reference),3,94.815,0.196,,
+amp512,widar,wimot_amp_only,WiMoT (amp_only),3,85.901,0.365,1.083,0.250
+amp_pca,widar,wimot_amp_full,"WiMoT (amp_full, primary)",3,91.481,1.076,0.917,0.382
+amp_pca,widar,strongest_baseline,VanillaCP+ER,3,75.309,0.238,11.333,0.083
+amp_pca,widar,joint,Joint training (non-continual reference),3,96.963,0.451,,
+amp_pca,widar,wimot_amp_only,WiMoT (amp_only),3,84.790,0.493,1.361,0.394
+amp_rp,widar,wimot_amp_full,"WiMoT (amp_full, primary)",3,88.198,0.280,1.667,0.363
+amp_rp,widar,strongest_baseline,VanillaCP+ER,3,63.951,0.746,13.667,0.870
+amp_rp,widar,joint,Joint training (non-continual reference),3,87.358,0.566,,
+amp_rp,widar,wimot_amp_only,WiMoT (amp_only),3,78.840,0.260,1.806,0.268
+amp_hand,widar,wimot_amp_full,"WiMoT (amp_full, primary)",3,82.074,0.714,1.528,0.210
+amp_hand,widar,strongest_baseline,VanillaCP+ER,3,62.889,0.707,12.000,0.500
+amp_hand,widar,joint,Joint training (non-continual reference),3,78.444,0.633,,
+amp_hand,widar,wimot_amp_only,WiMoT (amp_only),3,73.086,0.214,1.333,0.382

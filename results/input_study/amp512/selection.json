@@ -1,0 +1,223 @@
+{
+  "tag": "amp512",
+  "rule": "Maximum mean seed-42 validation AFA over 3DO and WiMANS (first maximum on ties); the selected value is then used for every seed, order, stream and label budget.",
+  "selected": {
+    "classic/ft": {
+      "coefficient": null,
+      "scores": null,
+      "note": "single candidate"
+    },
+    "classic/er": {
+      "coefficient": null,
+      "scores": null,
+      "note": "single candidate"
+    },
+    "classic/ewc": {
+      "coefficient": 100.0,
+      "candidates": [
+        1.0,
+        100.0,
+        10000.0
+      ],
+      "scores": [
+        0.46209876543209877,
+        0.48367283950617285,
+        0.48148148148148145
+      ]
+    },
+    "classic/ewc_er": {
+      "coefficient": 100.0,
+      "candidates": [
+        1.0,
+        100.0,
+        10000.0
+      ],
+      "scores": [
+        0.6125925925925926,
+        0.6316666666666666,
+        0.6090740740740741
+      ]
+    },
+    "classic/si": {
+      "coefficient": 10.0,
+      "candidates": [
+        0.1,
+        1.0,
+        10.0
+      ],
+      "scores": [
+        0.4581481481481481,
+        0.47027777777777774,
+        0.47398148148148145
+      ]
+    },
+    "classic/si_er": {
+      "coefficient": 10.0,
+      "candidates": [
+        0.1,
+        1.0,
+        10.0
+      ],
+      "scores": [
+        0.6083950617283951,
+        0.6107716049382717,
+        0.6163888888888889
+      ]
+    },
+    "classic/mas": {
+      "coefficient": 10.0,
+      "candidates": [
+        0.1,
+        1.0,
+        10.0
+      ],
+      "scores": [
+        0.5009259259259259,
+        0.5190123456790123,
+        0.5330246913580247
+      ]
+    },
+    "classic/mas_er": {
+      "coefficient": 0.1,
+      "candidates": [
+        0.1,
+        1.0,
+        10.0
+      ],
+      "scores": [
+        0.6064814814814814,
+        0.5795679012345679,
+        0.5322222222222222
+      ]
+    },
+    "classic/lwf": {
+      "coefficient": 0.5,
+      "candidates": [
+        0.5,
+        1.0,
+        2.0
+      ],
+      "scores": [
+        0.4783950617283951,
+        0.4375925925925926,
+        0.42962962962962964
+      ]
+    },
+    "classic/lwf_er": {
+      "coefficient": 0.5,
+      "candidates": [
+        0.5,
+        1.0,
+        2.0
+      ],
+      "scores": [
+        0.6009567901234568,
+        0.5553395061728396,
+        0.5503086419753087
+      ]
+    },
+    "classic/derpp": {
+      "coefficient": null,
+      "scores": null,
+      "note": "single candidate"
+    },
+    "classic/agem": {
+      "coefficient": null,
+      "scores": null,
+      "note": "single candidate"
+    },
+    "wifi/consense": {
+      "coefficient": 0.1,
+      "candidates": [
+        0.01,
+        0.1,
+        1.0
+      ],
+      "scores": [
+        0.4905555555555555,
+        0.4982716049382716,
+        0.49756172839506174
+      ]
+    },
+    "wifi/edgecl": {
+      "coefficient": 0.03,
+      "candidates": [
+        0.01,
+        0.03,
+        0.1
+      ],
+      "scores": [
+        0.5557098765432098,
+        0.5673456790123457,
+        0.5304012345679012
+      ]
+    },
+    "recent/duct": {
+      "coefficient": 0.1,
+      "candidates": [
+        0.1,
+        0.25,
+        0.5
+      ],
+      "scores": [
+        0.27314814814814814,
+        0.2716049382716049,
+        0.25308641975308643
+      ]
+    },
+    "recent/dualcp": {
+      "coefficient": null,
+      "candidates": [
+        0.1,
+        0.5
+      ],
+      "scores": null,
+      "note": "not runnable on this input: AssertionError('Not a dual hierarchy')"
+    },
+    "recent/vanillacp": {
+      "coefficient": 1.0,
+      "scores": null,
+      "note": "single candidate"
+    },
+    "recent/cn_dpm_aligned": {
+      "coefficient": -10.0,
+      "candidates": [
+        -10.0,
+        0.0,
+        10.0
+      ],
+      "scores": [
+        0.618641975308642,
+        0.6114814814814814,
+        0.612037037037037
+      ]
+    },
+    "recent/duct_er": {
+      "coefficient": 0.25,
+      "candidates": [
+        0.1,
+        0.25,
+        0.5
+      ],
+      "scores": [
+        0.24537037037037035,
+        0.41555555555555557,
+        0.3825
+      ]
+    },
+    "recent/dualcp_er": {
+      "coefficient": null,
+      "candidates": [
+        0.1,
+        0.5
+      ],
+      "scores": null,
+      "note": "not runnable on this input: AssertionError('Not a dual hierarchy')"
+    },
+    "recent/vanillacp_er": {
+      "coefficient": 1.0,
+      "scores": null,
+      "note": "single candidate"
+    }
+  }
+}
