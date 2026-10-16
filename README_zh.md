@@ -13,12 +13,24 @@
 
 </div>
 
+<p align="center">
+  <img src="assets/wimot_stagewise.png" width="100%" alt="三个数据集上逐阶段的已见域平均准确率">
+</p>
+<p align="center"><sub><b>数据流上的准确率</b>（论文 Fig. 3）。纵轴为每个训练阶段之后在已见域上的平均测试准确率（%），横轴为训练阶段，域顺序为原始顺序，三次运行的均值；
+(a) 3DO（3 天）、(b) WiMANS（3 个房间）、(c) Widar3.0（9 个用户）。曲线依次为 WiMoT、SI+ER、MAS+ER、LwF+ER、DER++、EdgeCL、ConSense 和微调（基线使用 9728 维输入）；
+微调、SI+ER、MAS+ER、LwF+ER、DER++ 共用首个域的网络，因此在阶段 1 重合。每条曲线的末点即下表的 AFA（WiMoT 为 94.02、89.61、95.16%）。</sub></p>
+
 论文 *WiMoT: Replay-Free Continual Wi-Fi Sensing via Moment Transport*（IEEE Internet of Things Journal，[待补充]）的代码。
 WiMoT 是一种免回放的持续学习算法：学习新采集域时不保存任何早期样本。它不存样本，而是在冻结特征基中为每个早期域的每个类别存储特征的均值与协方差。表示发生变化后，这些统计量会过时；WiMoT 把变化限制为仿射适配器，并对存储的统计量施加同一个仿射映射，使其保持有效：仿射映射把均值 μ 变为 Aμ + b、协方差 Σ 变为 AΣAᵀ，与它对样本本身的作用一致。监督对比学习与由存储统计量闭式计算的历史损失在可塑性（学习新域）与稳定性（保持早期域）之间取得平衡；OSCL 分类器（高斯判别分类器）每次更新后按各域等权重重新拟合，预测时无需域 ID。
 
 <p align="center">
   <img src="assets/wimot_framework.png" width="92%" alt="WiMoT 框架">
 </p>
+
+<p align="center">
+  <img src="assets/wimot_components.png" width="92%" alt="WiMoT 的三个组件">
+</p>
+<p align="center"><sub><b>三个组件</b>（论文 Fig. 2；二维合成点示意）。(a) SupCon 提供可塑性。(b) 历史损失提供表示稳定性：早期类别保持线性可分（圆环：最佳线性映射误判的样本）。(c) 矩传输提供记忆稳定性：适配器更新后，存储的统计量仍然有效。</sub></p>
 
 ## 亮点
 
@@ -76,13 +88,6 @@ WiMoT 是一种免回放的持续学习算法：学习新采集域时不保存�
 - **少标签：** 后续域仅保留 25% 或 10% 标签时，3DO 领先 +2.40 至 +2.81 pp，Widar3.0 领先 +9.85 至 +10.57 pp；WiMANS 上 AFR 最低（−0.46 和 −0.62 pp），AFA 比 MAS 低 1.23 和 1.44 pp。
 - **存储：** 秩 32 的低秩类别矩仅需完整协方差 6.4% 的存储，配对 AFA 变化在 −0.49 至 +1.07 pp 之间（至多损失 0.49 pp）；只存上三角可使存储减半且预测不变。
 
-<p align="center">
-  <img src="assets/wimot_stagewise.png" width="100%" alt="三个数据集上逐阶段的已见域平均准确率">
-</p>
-<p align="center"><sub><b>数据流上的准确率</b>（论文 Fig. 3）。纵轴为每个训练阶段之后在已见域上的平均测试准确率（%），横轴为训练阶段，域顺序为原始顺序，三次运行的均值；
-(a) 3DO（3 天）、(b) WiMANS（3 个房间）、(c) Widar3.0（9 个用户）。曲线依次为 WiMoT、SI+ER、MAS+ER、LwF+ER、DER++、EdgeCL、ConSense 和微调（基线使用 9728 维输入）；
-微调、SI+ER、MAS+ER、LwF+ER、DER++ 共用首个域的网络，因此在阶段 1 重合。每条曲线的末点即上表的 AFA（WiMoT 为 94.02、89.61、95.16%）。</sub></p>
-
 ## 补充分析
 
 对设计的两项分析（论文表 IV、补充材料 S-VIII 与 S-IX）；它们不改变主结果的任何系数。
@@ -132,7 +137,7 @@ $$\mu^{h} = A_t\,\mu^{\phi} + b_t, \qquad \Sigma^{h} = A_t\,\Sigma^{\phi}A_t^{\t
 
 对线性评分映射 F = [W A_t, W b_t + d]（类中心化并按首域范数缩放），每个已存储的域 s 以闭式给出 F 相对类中心化 one-hot 标签的平方误差，仅用到存储的二阶矩 B_s 和 [φ, 1] 的标签交叉矩 K_s。训练损失为
 
-$$\mathcal L_t=\begin{cases}0.5\,\mathcal L_{\mathrm{SC}}, & t=1,\\ 0.5\,\mathcal L_{\mathrm{SC}}+\dfrac{1}{t-1}\displaystyle\sum_{s<t}\Big(\operatorname{tr}\big(\tilde F B_s \tilde F^{\top}\big)-2\langle \tilde F, K_s\rangle_F+1\Big), & t>1.\end{cases}$$
+$$\mathcal L_t=\begin{cases}0.5\,\mathcal L_{\mathrm{SC}}, & t=1,\\ 0.5\,\mathcal L_{\mathrm{SC}}+\dfrac{1}{t-1}\displaystyle\sum_{s<t}\Big(\mathrm{tr}\big(\tilde F B_s \tilde F^{\top}\big)-2\langle \tilde F, K_s\rangle_F+1\Big), & t>1.\end{cases}$$
 
 OSCL 分类器（Yang、Tiomoko 和 Wang，ICLR 2023）用 h 上的高斯密度模型给出域权重 g_s(x)，因此不需要域 ID：
 

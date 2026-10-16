@@ -13,6 +13,15 @@
 
 </div>
 
+<p align="center">
+  <img src="assets/wimot_stagewise.png" width="100%" alt="Mean test accuracy over the seen domains after each training stage on 3DO, WiMANS, and Widar3.0">
+</p>
+<p align="center"><sub><b>Accuracy over the stream</b> (paper Fig. 3). Mean test accuracy (%, vertical axis) over the domains seen so far after each
+training stage (horizontal axis) in the original domain order, mean of three runs, for (a) 3DO (3 days), (b) WiMANS (3 rooms), and
+(c) Widar3.0 (9 users). Curves: WiMoT, SI+ER, MAS+ER, LwF+ER, DER++, EdgeCL, ConSense, and fine-tuning (baselines with the 9728-dimensional input). Fine-tuning, SI+ER, MAS+ER, LwF+ER, and DER++ share
+their first-domain network and therefore coincide at stage 1. The last point of each curve is the AFA of the table below
+(WiMoT: 94.02, 89.61, and 95.16%).</sub></p>
+
 Code for the article *WiMoT: Replay-Free Continual Wi-Fi Sensing via Moment Transport* (IEEE Internet of Things
 Journal, [TO BE ADDED]). WiMoT is a replay-free continual learning algorithm: it learns new acquisition domains without storing any earlier sample.
 In place of samples it stores, for each class of every earlier domain, the mean and covariance of its features in a frozen
@@ -28,6 +37,11 @@ with equal weight per domain, predicts without a domain identifier.
 <p align="center"><sub><b>Framework.</b> (a) A frozen encoder and fixed stems form the basis φ. (b) An affine adapter maps φ to h; the OSCL
 readout predicts from h without a domain identifier. (c) Class moments of φ are stored per domain and transported through the
 current adapter.</sub></p>
+
+<p align="center">
+  <img src="assets/wimot_components.png" width="92%" alt="The three components of WiMoT: SupCon gives plasticity, the historical loss gives representation stability, moment transport gives memory stability">
+</p>
+<p align="center"><sub><b>The three components</b> (paper Fig. 2), on synthetic two-dimensional points. (a) SupCon gives plasticity. (b) The historical loss gives representation stability: earlier classes remain linearly separable (rings: samples misread by the best linear map). (c) Moment transport gives memory stability: the stored statistics remain valid after an adapter update.</sub></p>
 
 ## Highlights
 
@@ -114,15 +128,6 @@ Tables VII–VIII, Supplementary Tables S1–S2; the baselines of all these sett
 - **Storage:** low-rank (rank 32) class moments need 6.4% of the memory of full covariances; the paired AFA change is
   between −0.49 and +1.07 pp (at most 0.49 pp lost). Storing upper triangles halves the memory with identical predictions.
 
-<p align="center">
-  <img src="assets/wimot_stagewise.png" width="100%" alt="Mean test accuracy over the seen domains after each training stage on 3DO, WiMANS, and Widar3.0">
-</p>
-<p align="center"><sub><b>Accuracy over the stream</b> (paper Fig. 3). Mean test accuracy (%, vertical axis) over the domains seen so far after each
-training stage (horizontal axis) in the original domain order, mean of three runs, for (a) 3DO (3 days), (b) WiMANS (3 rooms), and
-(c) Widar3.0 (9 users). Curves: WiMoT, SI+ER, MAS+ER, LwF+ER, DER++, EdgeCL, ConSense, and fine-tuning (baselines with the 9728-dimensional input). Fine-tuning, SI+ER, MAS+ER, LwF+ER, and DER++ share
-their first-domain network and therefore coincide at stage 1. The last point of each curve is the AFA of the table above
-(WiMoT: 94.02, 89.61, and 95.16%).</sub></p>
-
 ## Additional analyses
 
 Two analyses of the design (paper Table IV, Supplementary Sections S-VIII and S-IX); they change no coefficient of the main results.
@@ -193,7 +198,7 @@ For the linear score map F = [W A_t, W b_t + d], centred over classes and scaled
 s contributes the squared error of F against centred one-hot labels, in closed form from the stored second moment B_s and
 label cross-moment K_s of [φ, 1]. The training loss is
 
-$$\mathcal L_t=\begin{cases}0.5\,\mathcal L_{\mathrm{SC}}, & t=1,\\ 0.5\,\mathcal L_{\mathrm{SC}}+\dfrac{1}{t-1}\displaystyle\sum_{s<t}\Big(\operatorname{tr}\big(\tilde F B_s \tilde F^{\top}\big)-2\langle \tilde F, K_s\rangle_F+1\Big), & t>1.\end{cases}$$
+$$\mathcal L_t=\begin{cases}0.5\,\mathcal L_{\mathrm{SC}}, & t=1,\\ 0.5\,\mathcal L_{\mathrm{SC}}+\dfrac{1}{t-1}\displaystyle\sum_{s<t}\Big(\mathrm{tr}\big(\tilde F B_s \tilde F^{\top}\big)-2\langle \tilde F, K_s\rangle_F+1\Big), & t>1.\end{cases}$$
 
 The OSCL classifier (Yang, Tiomoko, and Wang, ICLR 2023) uses a Gaussian density model over h for domain weights g_s(x), so no
 domain identifier is needed:
