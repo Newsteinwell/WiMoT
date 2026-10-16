@@ -196,14 +196,15 @@ $$\mu^{h} = A_t\,\mu^{\phi} + b_t, \qquad \Sigma^{h} = A_t\,\Sigma^{\phi}A_t^{\t
 
 For the linear score map F = [W A_t, W b_t + d], centred over classes and scaled by its first-domain norm, each stored domain
 s contributes the squared error of F against centred one-hot labels, in closed form from the stored second moment B_s and
-label cross-moment K_s of [φ, 1]. The training loss is
+label cross-moment K_s of [φ, 1]. The training loss is defined per domain.
 
-```math
-\mathcal L_t=\begin{cases}
-  0.5\,\mathcal L_{\mathrm{SC}}, & t=1,\\
-  0.5\,\mathcal L_{\mathrm{SC}}+\dfrac{1}{t-1}\displaystyle\sum_{s<t}\Big(\mathrm{tr}\big(\tilde F B_s \tilde F^{\top}\big)-2\langle \tilde F, K_s\rangle_F+1\Big), & t>1.
-\end{cases}
-```
+For the first domain,
+
+$$\mathcal L_1=0.5\,\mathcal L_{\mathrm{SC}}$$
+
+and for each later domain $t>1$,
+
+$$\mathcal L_t=0.5\,\mathcal L_{\mathrm{SC}}+\dfrac{1}{t-1}\displaystyle\sum_{s<t}\Big(\mathrm{tr}\big(\tilde F B_s \tilde F^{\top}\big)-2\langle \tilde F, K_s\rangle_F+1\Big)$$
 
 The OSCL classifier (Yang, Tiomoko, and Wang, ICLR 2023) uses a Gaussian density model over h for domain weights g_s(x), so no
 domain identifier is needed:

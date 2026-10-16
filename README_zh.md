@@ -137,12 +137,13 @@ $$\mu^{h} = A_t\,\mu^{\phi} + b_t, \qquad \Sigma^{h} = A_t\,\Sigma^{\phi}A_t^{\t
 
 对线性评分映射 F = [W A_t, W b_t + d]（类中心化并按首域范数缩放），每个已存储的域 s 以闭式给出 F 相对类中心化 one-hot 标签的平方误差，仅用到存储的二阶矩 B_s 和 [φ, 1] 的标签交叉矩 K_s。训练损失为
 
-```math
-\mathcal L_t=\begin{cases}
-  0.5\,\mathcal L_{\mathrm{SC}}, & t=1,\\
-  0.5\,\mathcal L_{\mathrm{SC}}+\dfrac{1}{t-1}\displaystyle\sum_{s<t}\Big(\mathrm{tr}\big(\tilde F B_s \tilde F^{\top}\big)-2\langle \tilde F, K_s\rangle_F+1\Big), & t>1.
-\end{cases}
-```
+第一个域：
+
+$$\mathcal L_1=0.5\,\mathcal L_{\mathrm{SC}}$$
+
+之后每个域 $t>1$：
+
+$$\mathcal L_t=0.5\,\mathcal L_{\mathrm{SC}}+\dfrac{1}{t-1}\displaystyle\sum_{s<t}\Big(\mathrm{tr}\big(\tilde F B_s \tilde F^{\top}\big)-2\langle \tilde F, K_s\rangle_F+1\Big)$$
 
 OSCL 分类器（Yang、Tiomoko 和 Wang，ICLR 2023）用 h 上的高斯密度模型给出域权重 g_s(x)，因此不需要域 ID：
 
