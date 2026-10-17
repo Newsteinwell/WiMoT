@@ -110,7 +110,7 @@ def build(raw, out, title):
         rgap = 100*(statistics.mean(r['AFA'] for r in ref[('WiMoT', d)].values())-max(rcand)[0])
         lines.append(f'| {LABEL[d]} | {best} | {100*best_mean:.2f} | {100*statistics.mean(r["AFA"] for r in w.values()):.2f} | '
                      f'{statistics.mean(diff):+.2f} ± {statistics.stdev(diff) if len(diff) > 1 else float("nan"):.2f} ({ahead}/{len(diff)}) | {rgap:+.2f} |')
-    lines += ['', '### Mantis-input reference (paper Table I; WiMoT with 9728-D input, baselines with the 9216-D Mantis block)', '',
+    lines += ['', '### Mantis-input reference (WiMoT with 9728-D input, baselines with the 9216-D Mantis block; paper Supplementary Table S9, 9216 column)', '',
               '| Method | ' + ' | '.join(f'{LABEL[d]} AFA' for d in DATASETS) + ' |', '|---|---:|---:|---:|']
     for n in ['WiMoT'] + [NAME[m] for m in NAME]:
         if all((n, d) in ref for d in DATASETS):

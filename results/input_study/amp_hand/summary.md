@@ -66,7 +66,7 @@ AFA (%) ↑ and AFR (pp) ↓, mean ± sample SD over seeds 42–44; sorted by th
 | WiMANS | DualCP+ER | 33.74 | 37.24 | +3.50 ± 1.89 (3/3) | +1.03 |
 | Widar3.0 | VanillaCP+ER | 62.89 | 82.07 | +19.19 ± 0.97 (3/3) | +13.28 |
 
-### Mantis-input reference (paper Table I; WiMoT with 9728-D input, baselines with the 9216-D Mantis block)
+### Mantis-input reference (WiMoT with 9728-D input, baselines with the 9216-D Mantis block; paper Supplementary Table S9, 9216 column)
 
 | Method | 3DO AFA | WiMANS AFA | Widar3.0 AFA |
 |---|---:|---:|---:|

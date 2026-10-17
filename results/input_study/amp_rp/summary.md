@@ -62,7 +62,7 @@ AFA (%) ↑ and AFR (pp) ↓, mean ± sample SD over seeds 42–44; sorted by th
 | WiMANS | EdgeCL | 29.94 | 33.74 | +3.81 ± 0.99 (3/3) | +1.03 |
 | Widar3.0 | VanillaCP+ER | 63.95 | 88.20 | +24.25 ± 0.97 (3/3) | +13.28 |
 
-### Mantis-input reference (paper Table I; WiMoT with 9728-D input, baselines with the 9216-D Mantis block)
+### Mantis-input reference (WiMoT with 9728-D input, baselines with the 9216-D Mantis block; paper Supplementary Table S9, 9216 column)
 
 | Method | 3DO AFA | WiMANS AFA | Widar3.0 AFA |
 |---|---:|---:|---:|
