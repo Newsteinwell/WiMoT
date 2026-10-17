@@ -35,7 +35,7 @@ with equal weight per domain, predicts without a domain identifier.
   <img src="assets/wimot_framework.png" width="92%" alt="WiMoT framework: frozen feature basis, affine adapter and OSCL classifier, moment memory transported by the same affine map">
 </p>
 <p align="center"><sub><b>Framework.</b> (a) A frozen encoder and fixed stems form the basis φ. (b) An affine adapter maps φ to h; the OSCL
-readout predicts from h without a domain identifier. (c) Class moments of φ are stored per domain and transported through the
+OSCL classifier predicts from h without a domain identifier. (c) Class moments of φ are stored per domain and transported through the
 current adapter.</sub></p>
 
 <p align="center">
@@ -61,7 +61,7 @@ current adapter.</sub></p>
   and Widar3.0 (+13.11 pp) in the main setting, and on par on WiMANS (+0.41 ± 0.64 pp of average final accuracy, with
   0.00 against 2.78 pp of forgetting). WiMoT forgets at most 0.58 pp on all three streams.
 
-| Design question | Component | What it protects | Evidence from removal (paper, Table IV and Supplementary S9) |
+| Design question | Component | What it protects | Evidence from removal (paper, Table IV and Supplementary Table S10) |
 |---|---|---|---|
 | How to adapt without invalidating the memory? | Affine adapter on a frozen basis; moments moved by the same map | Validity of the stored memory | Frozen adapter: AFA −1.07 / −3.33 / −5.93 pp |
 | How to learn the new domain without forgetting, with no samples? | SupCon (plasticity) and the historical loss (stability) | Learning of the new domain; the representation | Without SupCon: new-domain accuracy −5.60 to −6.85 pp. Without the historical loss: AFR +0.36 to +1.11 pp |
@@ -88,8 +88,8 @@ computed from [`results/reference_results_same_input.json`](results/reference_re
 | Joint training² | – | 90.64 ± 0.76 | – | 91.46 ± 0.94 | – | 94.84 ± 0.41 | – |
 
 <sub>¹ SI+ER on 3DO, MAS+ER on WiMANS, LwF+ER on Widar3.0 (highest mean AFA among the 21 baselines; all three use replay). ² Non-continual reference: the baseline network trained on the union of all domains with the same 9728-dimensional
-input (Supplementary Table S7); it is a reference, not an upper bound. Leads over the strongest baseline: +3.77, +0.41 ± 0.64, and +13.11 pp.
-When the baselines receive only the 9216-dimensional Mantis block (Supplementary Table S12) the leads are +3.56, +1.03, and +13.28 pp;
+input (Supplementary Table S8); it is a reference, not an upper bound. Leads over the strongest baseline: +3.77, +0.41 ± 0.64, and +13.11 pp.
+When the baselines receive only the 9216-dimensional Mantis block (Supplementary Table S9) the leads are +3.56, +1.03, and +13.28 pp;
 against the better of the two input variants of each baseline they are +3.56, +0.41, and +13.11 pp. **WiMoT does not lead in every setting.** On WiMANS,
 WiMoT has the highest six-order average AFA (+0.34 pp over SI+ER) and the lowest AFR in four of six orders and with 25% and 10% of the labels; the
 AFA of WiMoT and of the strongest baseline are not separated in the main setting (+0.41 pp in two of three seeds); in three of six domain orders MAS or SI+ER is higher by 0.93–1.95 pp, with 25% or 10% of the
@@ -114,8 +114,8 @@ DUCT+ER have a lower AFR than WiMoT (−1.17 and −0.87 pp) but learn new domai
 learns the new domain 3.49 pp (3DO, A-GEM, AFR 14.64 pp), 2.62 pp (WiMANS, MAS+ER, AFR 2.78 pp), and 0.67 pp (Widar3.0, EWC+ER, AFR 19.25 pp)
 better than WiMoT; WiMoT's forgetting stays at most 0.58 pp, so it balances learning the new domain and keeping the earlier ones.
 
-Beyond the main setting (leads over the strongest baseline that was run in each setting, mean AFA, three seeds; paper Fig. 4 and
-Tables VII–VIII, Supplementary Tables S1–S2; the baselines of all these settings receive the 9728-dimensional input, except those of the five-seed study, which receive the 9216-dimensional Mantis block):
+Beyond the main setting (leads over the strongest baseline that was run in each setting, mean AFA, three seeds; paper Fig. 4,
+Tables VI–IX, and Supplementary Tables S1–S6; the baselines of all these settings receive the 9728-dimensional input, except those of the five-seed study, which receive the 9216-dimensional Mantis block):
 
 - **Domain orders:** ahead in all six domain orders of 3DO (+1.13 to +6.81 pp) and in three further user orders of
   Widar3.0 (+9.58 to +14.52 pp); on WiMANS ahead in three of six orders (+0.41 to +1.85 pp) and behind in three (−0.93 to −1.95 pp).
@@ -132,10 +132,10 @@ Tables VII–VIII, Supplementary Tables S1–S2; the baselines of all these sett
 
 Two analyses of the design (paper Table IV, Supplementary Sections S-VIII and S-IX); they change no coefficient of the main results.
 
-**Readout ablation.** Each readout is fitted on the same adapters and stored moments of the full method (AFA, %, mean ± sample SD over seeds 42–46;
+**Classifier ablation.** Each classifier is fitted on the same adapters and stored moments of the full method (AFA, %, mean ± sample SD over seeds 42–46;
 [`scripts/ablation_readout.py`](scripts/ablation_readout.py), results in [`results/additional_analyses/readout_ablation/`](results/additional_analyses/readout_ablation/)).
 
-| Readout | 3DO | WiMANS | Widar3.0 |
+| Classifier | 3DO | WiMANS | Widar3.0 |
 |---|:-:|:-:|:-:|
 | **OSCL (WiMoT)** | **93.98 ± 0.15** | **89.57 ± 0.55** | **95.24 ± 0.88** |
 | Nearest class mean | 80.89 ± 0.89 | 87.84 ± 0.80 | 67.05 ± 1.28 |
@@ -144,7 +144,7 @@ Two analyses of the design (paper Table IV, Supplementary Sections S-VIII and S-
 | Linear probe W | 85.77 ± 0.49 | 85.62 ± 1.10 | 81.94 ± 0.80 |
 
 The paired difference between OSCL and LDA on WiMANS is +0.74 ± 1.39 pp (OSCL higher in three seeds, equal in one, lower in one), which does not
-separate the two readouts; in all other pairs OSCL is higher in every seed.
+separate the two classifiers; in all other pairs OSCL is higher in every seed.
 
 **Loss-weight sweep.** AFA of WiMoT against the weight of the SupCon loss (λ<sub>sc</sub>, later domains) and the weight of the historical loss
 (λ<sub>h</sub>), seeds 42–44 ([`scripts/ablation_loss_sweep.py`](scripts/ablation_loss_sweep.py), [`scripts/plot_loss_sweep.py`](scripts/plot_loss_sweep.py),
@@ -176,7 +176,7 @@ domain in a frozen feature basis φ, and attaches one mechanism to each failure.
    the same affine map that changes the representation is applied to the stored class means and covariances, so the memory stays valid without drift estimation.
 2. *How can it learn the new domain without forgetting, with no samples?* SupCon supplies plasticity. A historical loss
    computed from the stored moments supplies stability of the representation: it penalizes updates that make earlier labels
-   less linearly readable (a proxy for readout accuracy, not a guarantee).
+   less linearly readable (a proxy for classification accuracy, not a guarantee).
 3. *How can it predict without a domain identifier, consistent with the representation?* The OSCL classifier is refitted after
    every update from the transported moments of all domains with uniform domain and class priors, which keeps the classifier
    consistent with the representation and does not favor the newest domain.
@@ -184,7 +184,7 @@ domain in a frozen feature basis φ, and attaches one mechanism to each failure.
 **Formulas.** In the first domain, a stem on the MantisV2 features, a first-domain PCA shortcut, and a fixed random stem on
 the amplitude descriptor are trained with the supervised contrastive loss and frozen into a 512-dimensional basis φ. In
 every later domain only the affine adapter (and the projector and the linear map W of the historical loss) are trained; the
-arrivals are discarded after their moments are stored. The adapter maps the basis to the representation that the readout
+arrivals are discarded after their moments are stored. The adapter maps the basis to the representation that the classifier
 uses:
 
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/equations/eq_adapter_dark.png"><img src="assets/equations/eq_adapter_light.png" width="112" alt="h = A_t phi + b_t"></picture></p>
@@ -285,15 +285,15 @@ python scripts/check_predictions.py                                    # shipped
 
 | Study | Paper | Trajectories |
 |---|---|---|
-| `main` | Table I; Fig. 3; Supplementary Tables S6, S8 | 198 |
-| `ablation` | Table IV | 120 |
-| `sameinput` | Table V; Supplementary Table S7 | 180 |
-| `backbone` | Table VI; Supplementary Tables S3, S4 | 324 |
-| `widarext` | Table VII; Fig. 4 | 90 |
-| `orders` | Table VIII; Supplementary Table S1; Fig. 4 | 450 |
-| `fewlabel` | Supplementary Table S2; Fig. 4 | 198 |
-| `memory` | Table IX; Supplementary Table S5 | 45 |
-| `extra_seeds` | Supplementary, additional seeds | 56 |
+| `main` | Tables I, III; Fig. 3; Supplementary Tables S2, S7, S9 | 198 |
+| `ablation` | Table IV; Supplementary Table S10 | 120 |
+| `sameinput` | Supplementary Table S8 | 180 |
+| `backbone` | Table VIII; Supplementary Tables S4, S5 | 324 |
+| `widarext` | Table VI; Fig. 4 | 90 |
+| `orders` | Table VII; Supplementary Table S1; Fig. 4 | 450 |
+| `fewlabel` | Supplementary Table S3; Fig. 4 | 198 |
+| `memory` | Table IX; Supplementary Table S6 | 45 |
+| `extra_seeds` | Supplementary Section S-IV-A (additional seeds) | 56 |
 
 The job lists of the baselines with the 9728-dimensional input are in `configs/jobs_sameall/` (`python -m wimot.study sameall_<study>`, coefficients in `configs/locks_sameinput_all.json`); their records are in `results/same_input/` and are merged with the records of the method by `scripts/merge_same_input.py`. The trajectory counts above are those of the job lists with the 9216-dimensional Mantis block.
 

@@ -106,28 +106,28 @@ python scripts/build_tables.py --reference-only --study <study>        # the pap
 
 | Study | Paper | Trajectories |
 |---|---|---|
-| `main` | Table I; Fig. 3 (stage-wise accuracies); Supplementary Tables S6, S8 (baselines: 9728-D input, see below) | 198 |
-| `ablation` | Table IV (seeds 42-46) | 120 |
-| `sameinput` | Table V; Supplementary Table S7 (with the joint-training reference) | 180 |
-| `backbone` | Table VI; Supplementary Tables S3, S4 (needs `FEATURES/<encoder>/`) | 324 |
-| `widarext` | Table VII; Fig. 4 | 90 |
-| `orders` | Table VIII; Supplementary Table S1; Fig. 4 | 450 |
-| `fewlabel` | Supplementary Table S2; Fig. 4 | 198 |
-| `memory` | Table IX (storage); Supplementary Table S5 | 45 |
-| `extra_seeds` | Supplementary "Additional Seeds and Reproducibility" (seeds 45, 46) | 56 |
+| `main` | Tables I, III; Fig. 3 (stage-wise accuracies); Supplementary Tables S2, S7, S9 (baselines: 9728-D input, see below) | 198 |
+| `ablation` | Table IV; Supplementary Table S10 (seeds 42-46) | 120 |
+| `sameinput` | Supplementary Table S8 (with the joint-training reference) | 180 |
+| `backbone` | Table VIII; Supplementary Tables S4, S5 (needs `FEATURES/<encoder>/`) | 324 |
+| `widarext` | Table VI; Fig. 4 | 90 |
+| `orders` | Table VII; Supplementary Table S1; Fig. 4 | 450 |
+| `fewlabel` | Supplementary Table S3; Fig. 4 | 198 |
+| `memory` | Table IX (storage); Supplementary Table S6 | 45 |
+| `extra_seeds` | Supplementary Section S-IV-A, "Additional Seeds and Reproducibility" (seeds 45, 46) | 56 |
 
 The baselines of `main`, `orders`, `fewlabel`, `widarext` (including Widar3.0 rooms 2 and 3), and `backbone` (encoder study) in the paper tables use the 9728-D input described below; the trajectory counts
 above are those of the job lists of `configs/jobs/` (WiMoT, the ablations, and the baselines with the 9216-D Mantis block). The storage study (`memory`) and the five-seed study (`extra_seeds`) use the 9216-D input.
 
-The plasticity and stability measures of Table III and Supplementary Table S9 (new-domain accuracy, earlier-domain accuracy after the
+The plasticity and stability measures of Table III and Supplementary Table S10 (new-domain accuracy, earlier-domain accuracy after the
 last update, AFR) are recomputed from the stored accuracy matrices, without retraining, by
 `python scripts/plasticity_stability.py` (studies `main` and `ablation`; `--results results/reference_results.json` for the 9216-D baselines).
 `python scripts/readme_numbers.py` prints every number quoted in the README, including the leads against the 9216-D baselines, and
 `python scripts/plot_stagewise.py` and `python scripts/plot_loss_sweep.py` redraw the figures of the README.
 
-### Readout ablation and loss-weight sweep
+### Classifier ablation and loss-weight sweep
 
-Table IV (rows OSCL → NCM/LDA/QDA) and Supplementary Section S-VIII fit alternative readouts on the adapters and stored moments of the
+Table IV (rows OSCL → NCM/LDA/QDA) and Supplementary Section S-VIII fit alternative classifiers on the adapters and stored moments of the
 trained full method, without retraining the adapters; Supplementary Section S-IX retrains the method with other loss weights. Both write to
 `results/additional_analyses/`.
 
