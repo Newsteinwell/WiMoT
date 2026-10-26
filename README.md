@@ -7,9 +7,10 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.12](https://img.shields.io/badge/Python-3.12-3776AB.svg)](requirements.txt)
 [![PyTorch 2.8](https://img.shields.io/badge/PyTorch-2.8-EE4C2C.svg)](requirements.txt)
-[![Paper](https://img.shields.io/badge/Paper-TO%20BE%20ADDED-lightgrey.svg)](#citation)
+[![arXiv](https://img.shields.io/badge/arXiv-2610.32660-b31b1b.svg)](https://arxiv.org/abs/2610.32660)
+[![Paper](https://img.shields.io/badge/Paper-IEEE%20IoT%20J%20(under%20review)-0F62FE.svg)](https://arxiv.org/abs/2610.32660)
 
-[Paper (TO BE ADDED)](#citation) · [Supplementary material (TO BE ADDED)](#citation) · [Citation](#citation) · [中文说明](README_zh.md)
+[Paper (arXiv)](https://arxiv.org/abs/2610.32660) · [PDF](https://arxiv.org/pdf/2610.32660) · [Citation](#citation) · [中文说明](README_zh.md)
 
 </div>
 
@@ -22,8 +23,10 @@ training stage (horizontal axis) in the original domain order, mean of three run
 their first-domain network and therefore coincide at stage 1. The last point of each curve is the AFA of the table below
 (WiMoT: 94.02, 89.61, and 95.16%).</sub></p>
 
-Code for the article *WiMoT: Replay-Free Continual Wi-Fi Sensing via Moment Transport* (IEEE Internet of Things
-Journal, [TO BE ADDED]). WiMoT is a replay-free continual learning algorithm: it learns new acquisition domains without storing any earlier sample.
+Code for the article *WiMoT: Replay-Free Continual Wi-Fi Sensing via Moment Transport*
+([arXiv:2610.32660](https://arxiv.org/abs/2610.32660); submitted to IEEE Internet of Things Journal).
+WiMoT is a replay-free continual learning algorithm: it learns new acquisition domains without storing any earlier sample.
+The arXiv PDF includes the supplementary material after the main text.
 In place of samples it stores, for each class of every earlier domain, the mean and covariance of its features in a frozen
 feature basis. When the representation changes, such statistics become stale. WiMoT restricts the change to an affine adapter
 and applies the same affine map to the stored statistics, so that they remain valid: an affine map sends a mean μ to Aμ + b and a covariance Σ to AΣAᵀ, as it does for the samples themselves. Supervised contrastive learning
@@ -316,15 +319,18 @@ tests/            fast consistency checks (CPU)
 
 ## Citation
 
-If you use this code, please cite the article (the entry is updated when the article is published; see also [CITATION.cff](CITATION.cff)):
+If you use this code, please cite the preprint (the entry is updated when the article is published; see also [CITATION.cff](CITATION.cff)):
 
 ```bibtex
-@article{wimot,
-  title   = {{WiMoT}: Replay-Free Continual {Wi-Fi} Sensing via Moment Transport},
-  author  = {Yang, Chunchun and Cao, Yang and Chen, Zhitang},
-  journal = {IEEE Internet of Things Journal},
-  year    = {2026},
-  note    = {Under review}
+@misc{yang2026wimot,
+  title         = {{WiMoT}: Replay-Free Continual {Wi-Fi} Sensing via Moment Transport},
+  author        = {Yang, Chunchun and Cao, Yang and Chen, Zhitang},
+  year          = {2026},
+  eprint        = {2610.32660},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.AI},
+  url           = {https://arxiv.org/abs/2610.32660},
+  note          = {Submitted to IEEE Internet of Things Journal}
 }
 ```
 

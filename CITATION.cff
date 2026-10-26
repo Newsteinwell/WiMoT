@@ -12,6 +12,10 @@ authors:
     given-names: "Yang"
   - family-names: "Chen"
     given-names: "Zhitang"
+identifiers:
+  - type: url
+    value: "https://arxiv.org/abs/2610.32660"
+    description: "arXiv preprint"
 preferred-citation:
   type: article
   title: "WiMoT: Replay-Free Continual Wi-Fi Sensing via Moment Transport"
@@ -25,3 +29,8 @@ preferred-citation:
   journal: "IEEE Internet of Things Journal"
   year: 2026
   status: "submitted"
+  url: "https://arxiv.org/abs/2610.32660"
+  identifiers:
+    - type: other
+      value: "arXiv:2610.32660"
+      description: "arXiv identifier"
