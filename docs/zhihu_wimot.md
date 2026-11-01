@@ -27,19 +27,19 @@ WiMoT 换了一条路：
 
 整体流程如下图。
 
-![WiMoT 框架图](zhihu_images/01_framework.jpg)
+![WiMoT 框架图](https://raw.githubusercontent.com/Newsteinwell/WiMoT/main/assets/zhihu/01_framework.jpg)
 
 图 1 WiMoT 框架。(a) 冻结特征基底；(b) 仿射适配器与 OSCL 分类器；(c) 用同一仿射映射传输的类别矩记忆。
 
 三个组件各自负责什么，可以用下图直观看一下：
 
-![WiMoT 三组件](zhihu_images/02_components.jpg)
+![WiMoT 三组件](https://raw.githubusercontent.com/Newsteinwell/WiMoT/main/assets/zhihu/02_components.jpg)
 
 图 2 三个组件（示意）。(a) SupCon 提供可塑性；(b) 历史损失提供表示稳定性；(c) 矩传输提供记忆稳定性。
 
 关键公式关系可以概括成下面这组示意（适配 → 传输 → 损失 → 读出）：
 
-![关键公式示意](zhihu_images/05_equations.jpg)
+![关键公式示意](https://raw.githubusercontent.com/Newsteinwell/WiMoT/main/assets/zhihu/05_equations.jpg)
 
 图 3 仿射适配、矩传输、训练目标与 OSCL 读出的对应关系（示意）。
 
@@ -53,7 +53,7 @@ WiMoT 换了一条路：
 
 我们在三个公开 CSI 数据流上评测：3DO、WiMANS、Widar3.0，并和 21 种持续学习配置对比（含多种回放方法）。主要数字可以先看这张汇总卡：
 
-![主要结果汇总](zhihu_images/06_results_card.jpg)
+![主要结果汇总](https://raw.githubusercontent.com/Newsteinwell/WiMoT/main/assets/zhihu/06_results_card.jpg)
 
 图 4 三个数据流上的 AFA / AFR，以及相对最强基线的差距概览。
 
@@ -67,13 +67,13 @@ WiMoT 换了一条路：
 
 逐阶段的精度曲线如下。WiMoT 在各阶段之后对已见域的平均测试精度整体更稳：
 
-![阶段精度曲线](zhihu_images/03_stagewise.jpg)
+![阶段精度曲线](https://raw.githubusercontent.com/Newsteinwell/WiMoT/main/assets/zhihu/03_stagewise.jpg)
 
 图 5 三个数据流上，每个训练阶段之后在已见域上的平均测试精度。WiMoT 曲线末点对应上表 AFA。
 
 历史损失权重怎么选，也会影响最终精度。下图是损失权重扫描：
 
-![损失权重扫描](zhihu_images/04_loss_weight.jpg)
+![损失权重扫描](https://raw.githubusercontent.com/Newsteinwell/WiMoT/main/assets/zhihu/04_loss_weight.jpg)
 
 图 6 历史损失权重对平均最终精度的影响。合适的权重能在学新与保旧之间取得更稳的折中。
 
