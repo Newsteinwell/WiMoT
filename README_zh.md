@@ -41,7 +41,7 @@ WiMoT 是一种免回放的持续学习算法：学习新采集域时不保存�
 - **冻结的基础模型加轻量适配器。** MantisV2 特征在提取后固定；后续域只训练 512→128 的仿射适配器、投影头和历史损失中用到的线性映射。
 - **领先于 21 个持续学习基线（含回放方法）。** 在主设定下，3DO 上高 3.77 pp，Widar3.0 上高 13.11 pp，WiMANS 上与最强基线相当（平均最终准确率 +0.41 ± 0.64 pp，遗忘率 0.00 对 2.78 pp）；WiMoT 在三个数据流上的遗忘率均不超过 0.58 pp。
 
-| 设计问题 | 组件 | 保护对象 | 去除实验的证据（论文表 IV 与补充材料 Table S10） |
+| 设计问题 | 组件 | 保护对象 | 去除实验的证据（论文表 4 与补充材料 Table S10） |
 |---|---|---|---|
 | 如何适应而不使记忆失效？ | 冻结基上的仿射适配器；由同一映射传输矩 | 存储记忆的有效性 | 冻结适配器：AFA −1.07 / −3.33 / −5.93 pp |
 | 没有样本时如何学习新域而不遗忘？ | SupCon（可塑性）与历史损失（稳定性） | 新域的学习；表示 | 去除 SupCon：新域精度 −5.60 至 −6.85 pp；去除历史损失：AFR +0.36 至 +1.11 pp |
@@ -50,7 +50,7 @@ WiMoT 是一种免回放的持续学习算法：学习新采集域时不保存�
 ## 主要结果
 
 平均最终准确率（AFA，%，越高越好）与平均遗忘率（AFR，百分点，越低越好），均值 ± 样本标准差，种子 42–44。所有方法接收 9728 维输入（冻结的 9216 维 MantisV2 特征加 512 维幅度描述子）。
-数字由 [`results/reference_results_same_input.json`](results/reference_results_same_input.json) 经 [`scripts/readme_numbers.py`](scripts/readme_numbers.py) 计算，与论文 Table I 一致。
+数字由 [`results/reference_results_same_input.json`](results/reference_results_same_input.json) 经 [`scripts/readme_numbers.py`](scripts/readme_numbers.py) 计算，与论文 Table 2 一致。
 
 | 方法 | 回放 | 3DO AFA | 3DO AFR | WiMANS AFA | WiMANS AFR | Widar3.0 AFA | Widar3.0 AFR |
 |---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
@@ -68,7 +68,7 @@ WiMoT 是一种免回放的持续学习算法：学习新采集域时不保存�
 若基线只接收 9216 维 Mantis 块（补充材料 Table S9），领先为 +3.56、+1.03 和 +13.28 pp；对每个基线取两种输入中较好者，则为 +3.56、+0.41 和 +13.11 pp。
 **WiMoT 并非在所有设定下领先。** 在 WiMANS 上，WiMoT 的六顺序平均 AFA 最高（比 SI+ER 高 0.34 pp），六种顺序中四种以及 25% 和 10% 标签下 AFR 最低；主设定中 WiMoT 与最强基线的 AFA 未被区分（三个种子中有两个领先，+0.41 pp）；六种域顺序中有三种，MAS 或 SI+ER 高 0.93–1.95 pp；后续域只有 25% 或 10% 标签时 MAS 高 1.23 和 1.44 pp；换用另外五种基础模型编码器时（使用相应编码器的 9728 维输入），五个基线中的最强者（SI+ER，TSPulse-r1 下为 DER++）高 2.67–5.04 pp。</sub>
 
-**可塑性与稳定性。** 新域精度（每次更新中所学域的平均精度，度量可塑性）、最后一次更新后在早期域上的精度，以及 AFR；由同一批运行保存的精度矩阵经 [`scripts/plasticity_stability.py`](scripts/plasticity_stability.py) 计算（论文：表 III）。
+**可塑性与稳定性。** 新域精度（每次更新中所学域的平均精度，度量可塑性）、最后一次更新后在早期域上的精度，以及 AFR；由同一批运行保存的精度矩阵经 [`scripts/plasticity_stability.py`](scripts/plasticity_stability.py) 计算（论文：表 3）。
 
 | 方法 | 3DO 新域 / 早期域 / AFR | WiMANS 新域 / 早期域 / AFR | Widar3.0 新域 / 早期域 / AFR |
 |---|:-:|:-:|:-:|
@@ -82,7 +82,7 @@ WiMoT 是一种免回放的持续学习算法：学习新采集域时不保存�
 
 微调学得新域很好但遗忘严重；遗忘低的基线对新域学得较差（3DO 上 LwF+ER 和 DUCT+ER 的 AFR 低于 WiMoT（−1.17 和 −0.87 pp），但学习新域的精度低 9.13 和 14.00 pp）。最佳基线学习新域的精度在 3DO（A-GEM，AFR 14.64 pp）、WiMANS（MAS+ER，AFR 2.78 pp）和 Widar3.0（EWC+ER，AFR 19.25 pp）上分别比 WiMoT 高 3.49、2.62 和 0.67 pp。WiMoT 的遗忘率不超过 0.58 pp，兼顾新域的学习与早期域的保持。
 
-主设定之外（相对每个设定中参与比较的最强基线，三个种子的平均 AFA；见论文 Fig. 4、Table VI–IX 和补充材料 Table S1–S6；除五种子研究的基线使用 9216 维 Mantis 块外，这些设定中的基线均使用 9728 维输入）：
+主设定之外（相对每个设定中参与比较的最强基线，三个种子的平均 AFA；见论文 Fig. 4、Table 6–9 和补充材料 Table S1–S6；除五种子研究的基线使用 9216 维 Mantis 块外，这些设定中的基线均使用 9728 维输入）：
 
 - **域顺序：** 3DO 的全部六种域顺序均领先（+1.13 至 +6.81 pp），Widar3.0 另外三种用户顺序均领先（+9.58 至 +14.52 pp）；WiMANS 六种顺序中三种领先（+0.41 至 +1.85 pp），另外三种有基线更高（0.93 至 1.95 pp）。Widar3.0 房间 2 和 3：+0.45 pp（SI+ER；三个种子中两个领先，处于种子波动范围内）和 +9.92 pp（DER++）。
 - **编码器：** WiMoT 相对五个基线（微调、LwF、SI+ER、DER++、EdgeCL）中的最强者：在全部七种编码器（预训练 MantisV2、随机初始化 MantisV2、MOMENT-1-large、TSPulse-r1、Chronos-2、TimesFM 2.5、TimesFM 3.0）下，3DO（+3.77 至 +9.56 pp）和 Widar3.0（+13.70 至 +30.99 pp）上均在每个种子领先；WiMANS 上在两种 MantisV2 编码器下领先（+1.03 和 +1.44 pp），在其余五个模型下最强基线更高（2.67 至 5.04 pp）。
@@ -91,7 +91,7 @@ WiMoT 是一种免回放的持续学习算法：学习新采集域时不保存�
 
 ## 补充分析
 
-对设计的两项分析（论文表 IV、补充材料 S-VIII 与 S-IX）；它们不改变主结果的任何系数。
+对设计的两项分析（论文表 4、补充材料 S8 与 S9）；它们不改变主结果的任何系数。
 
 **分类器消融。** 各分类器均在完整方法的同一适配器和已存储的矩上拟合（AFA，%，均值 ± 样本标准差，种子 42–46；
 [`scripts/ablation_readout.py`](scripts/ablation_readout.py)，结果见 [`results/additional_analyses/readout_ablation/`](results/additional_analyses/readout_ablation/)）。
@@ -117,6 +117,26 @@ WiMANS 上 OSCL 与 LDA 的配对差为 +0.74 ± 1.39 pp（OSCL 在三个种子�
 权重大于零时（λ<sub>sc</sub> 取 0.1–2，λ<sub>h</sub> 取 0.25–4），AFA 在 3DO 为 93.94–94.12%，WiMANS 为 89.09–89.61%，Widar3.0 为 94.96–95.21%，与论文设定（λ<sub>sc</sub> = 0.5，λ<sub>h</sub> = 1）相差约一个种子标准差以内。
 把某个权重置零会使 WiMANS（−0.93 和 −1.03 pp）与 Widar3.0（−1.36 和 −0.91 pp）的 AFA 下降，但 3DO 不然（后续域去掉 SupCon 为 +0.09 pp，去掉历史损失为 −0.08 pp，均在种子标准差内）；
 3DO 上去掉历史损失的影响体现在 AFR（0.43 对 0.32 pp），在所有域中去掉 SupCon 则使 AFA 下降 2.17 pp。由于 AdamW 对损失的整体缩放不变，只有比值 λ<sub>sc</sub>/λ<sub>h</sub> 起作用：比值相同的设置给出相同的精度矩阵（最大差 0.00 pp）。
+
+## CPU 实测开销
+
+在无 GPU 的笔记本 CPU 上运行发布的实现（Apple M4 Pro，float32，种子 42；四线程，括号内为单线程；论文 Table 10；
+[`scripts/cpu_benchmark.py`](scripts/cpu_benchmark.py)、[`experiments/run_cpu_benchmark.sh`](experiments/run_cpu_benchmark.sh)，结果见 [`results/cpu_benchmark/`](results/cpu_benchmark/)）。这些运行的 AFA 在 WiMANS 和 Widar3.0 上与相同种子的 GPU 运行相同，在 3DO 上相差不超过 0.08 pp（四线程 94.11%，单线程 94.17%，GPU 94.08%）。
+
+| 指标 | 3DO | WiMANS | Widar3.0 |
+|---|:-:|:-:|:-:|
+| 单次查询，编码器（ms） | 33 (61) | 158 (324) | 320 (724) |
+| 单次查询，分类器（ms） | < 0.1 | < 0.3 | < 0.5 |
+| 第一个域，训练（s） | 18.4 (27.0) | 3.7 (4.5) | 3.8 (5.2) |
+| 后续域，更新（s）¹ | 2.4–2.7 | 2.2–4.5 | 1.3–24.6 |
+| 每个域的到达样本编码（s） | 96 (162) | 62 (141) | 144–145 (352–354) |
+| 峰值内存，查询编码（GiB） | 0.79 | 2.38 | 4.47 |
+| 峰值内存，更新（GiB） | 1.95 | 0.82 | 1.34 |
+
+<sub>查询时间为 20 次查询的中位数。¹ 第一个域之后的适配器训练、矩传输与分类器重拟合；到达样本的编码单列。
+`WiMoT.predict_proba` 每次调用都会重拟合分类器，因此单次查询的分类器时间取 1 行与 512 行调用之间的斜率。
+编码器把每个通道插值到 512 个采样点，因此用预处理后形状的随机窗口计时（3DO 52 × 351，WiMANS 270 × 300，Widar3.0 540 × 300）。
+Widar3.0 上更新时间随已存储域数增长（第二个用户 1.3 s，第九个用户 24.6 s）。笔记本 CPU 快于常见的边缘硬件。</sub>
 
 ## 方法概要
 

@@ -50,7 +50,7 @@ def reference():
     rows = []
     for r in json.loads((REPO/'results'/'reference_results.json').read_text())['results']:
         if r['encoder'] != 'mantis': continue
-        if r['family'] == 'method':     # WiMoT 'main' of Table I is stored with the ablation study (seeds 42-46)
+        if r['family'] == 'method':     # WiMoT 'main' of Table 2 is stored with the ablation study (seeds 42-46)
             if not (r['study'] == 'ablation' and r['method'] == 'main' and r['seed'] <= 44): continue
         elif r['study'] != 'main': continue
         rows.append(dict(name=display(r) if r['family'] != 'method' else 'WiMoT', family=r['family'], method=r['method'],

@@ -55,7 +55,7 @@ def main():
     ref = load(a.results); report = {}
     study = lambda *names: [r for r in ref if r['study'] in names]
 
-    # Table I
+    # Table 2
     main_cells = cells([r for r in ref if r['family'] != 'joint' and (r['study'] == 'main' or (r['study'] == 'ablation' and r['method'] == 'main'))])
     table = {}
     for d in DATASETS:
@@ -152,7 +152,7 @@ def main():
     if a.json: return print(json.dumps(report, indent=1, default=list))
 
     f = lambda t: f'{t[0]:.2f}±{t[1]:.2f}'
-    print('Table I (AFA / AFR, %, mean±SD, seeds 42-44)')
+    print('Table 2 (AFA / AFR, %, mean±SD, seeds 42-44)')
     for m in ('WiMoT', 'si_er', 'derpp', 'cn_dpm_aligned', 'ft'):
         print(f'  {NAMES.get(m, m):10}', '  '.join(f"{d}: {f(report['table1'][d][m]['AFA'])} / "
                                                      f"{f(report['table1'][d][m]['AFR'])}" for d in DATASETS))

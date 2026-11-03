@@ -1,0 +1,24 @@
+{
+ "part": "encoder",
+ "dataset": "3do",
+ "input_shape": [
+  52,
+  512
+ ],
+ "machine": {
+  "cpu": "Apple M4 Pro",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "python": "3.13.5",
+  "torch": "2.8.0",
+  "threads": 1,
+  "torch_threads": 1
+ },
+ "per_query": {
+  "median_s": 0.06077650003135204,
+  "p90_s": 0.06340267496416345,
+  "min_s": 0.05664633301785216,
+  "repeats": 20
+ },
+ "per_recording_in_pairs_s": 0.06767618749290705,
+ "peak_rss_mib": 907.390625
+}

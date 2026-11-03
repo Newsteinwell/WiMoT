@@ -1,0 +1,24 @@
+{
+ "part": "encoder",
+ "dataset": "wimans",
+ "input_shape": [
+  270,
+  512
+ ],
+ "machine": {
+  "cpu": "Apple M4 Pro",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "python": "3.13.5",
+  "torch": "2.8.0",
+  "threads": 1,
+  "torch_threads": 1
+ },
+ "per_query": {
+  "median_s": 0.3244340210221708,
+  "p90_s": 0.3265092205023393,
+  "min_s": 0.3206876670010388,
+  "repeats": 20
+ },
+ "per_recording_in_pairs_s": 0.37288832300691865,
+ "peak_rss_mib": 2519.71875
+}

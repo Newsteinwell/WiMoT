@@ -269,9 +269,9 @@ def main():
                                                               '(same layout as results/reference_results.json); WiMoT unchanged.',
                                                               results=rows)))
 
-    # ------------------------------------------------ Table I
+    # ------------------------------------------------ Table 2
     tn, to = main_table(recs_new), main_table(recs_old)
-    lines = []; csv_rows = []; cmp_rows = []; md = ['# Table I with the 9728-D input for every baseline\n',
+    lines = []; csv_rows = []; cmp_rows = []; md = ['# Table 2 with the 9728-D input for every baseline\n',
                                                      'AFA (%) and AFR (pp), mean ± sample SD over seeds 42-44; sorted by AFA within each stream.\n']
     joint = defaultdict(list)
     for r in new:
@@ -309,22 +309,22 @@ def main():
                                              'dAFA_pp', 'dAFR_pp'), csv_rows)
     cols = ('dataset', 'method', 'AFA_mean', 'AFA_sd', 'AFR_mean', 'AFR_sd', 'AFA_old9216', 'AFR_old9216', 'dAFA_pp', 'dAFR_pp')
     (out/'main'/'table1_new.json').write_text(json.dumps(dict(
-        description='Table I with the 9728-D input for every baseline; AFA in %, AFR in pp, mean and sample SD over seeds 42-44; old9216 = earlier baselines (9216-D).',
+        description='Table 2 with the 9728-D input for every baseline; AFA in %, AFR in pp, mean and sample SD over seeds 42-44; old9216 = earlier baselines (9216-D).',
         strongest={d: dict(method=summary[d]['best'], AFA=summary[d]['best_afa'], AFR=summary[d]['best_afr'], lead_mean=summary[d]['lead'][0], lead_sd=summary[d]['lead'][1],
                            seeds_ahead=summary[d]['lead'][2], old_method=summary[d]['old_best'], old_AFA=summary[d]['old_best_afa'], old_lead=summary[d]['old_lead'][0]) for d in DATASETS},
         rows=[dict(zip(cols, r)) for r in csv_rows]), indent=1))
     report['main'] = summary
     for d in DATASETS:
         s = summary[d]
-        old_vs_new += [('Table I', f'{DNAME[d]}: strongest baseline', nm(s['old_best']), nm(s['best']), ''),
-                       ('Table I', f'{DNAME[d]}: strongest baseline AFA', f"{s['old_best_afa']:.2f}", f"{s['best_afa']:.2f}", ''),
-                       ('Table I', f'{DNAME[d]}: WiMoT lead (pp)', f"{s['old_lead'][0]:+.2f}", f"{s['lead'][0]:+.2f}",
+        old_vs_new += [('Table 2', f'{DNAME[d]}: strongest baseline', nm(s['old_best']), nm(s['best']), ''),
+                       ('Table 2', f'{DNAME[d]}: strongest baseline AFA', f"{s['old_best_afa']:.2f}", f"{s['best_afa']:.2f}", ''),
+                       ('Table 2', f'{DNAME[d]}: WiMoT lead (pp)', f"{s['old_lead'][0]:+.2f}", f"{s['lead'][0]:+.2f}",
                         f"paired ±SD {s['lead'][1]:.2f}, {s['lead'][2]}/{s['lead'][3]} seeds"),
-                       ('Table I', f'{DNAME[d]}: AFR of the strongest baseline', f"{st.mean(strongest(to[d])[1][s['old_best']]['AFR']):.2f}",
+                       ('Table 2', f'{DNAME[d]}: AFR of the strongest baseline', f"{st.mean(strongest(to[d])[1][s['old_best']]['AFR']):.2f}",
                         f"{s['best_afr']:.2f}", '')]
         if d in joint:
             old_j = [100*r['AFA'] for r in ref if r['study'] == 'sameinput' and r['family'] == 'joint' and r['input'] == 'cat9728' and r['dataset'] == d]
-            old_vs_new.append(('Table I', f'{DNAME[d]}: joint-training reference AFA', f'{st.mean(old_j):.2f}', f'{st.mean(joint[d]):.2f}', 'same 9728-D input in both'))
+            old_vs_new.append(('Table 2', f'{DNAME[d]}: joint-training reference AFA', f'{st.mean(old_j):.2f}', f'{st.mean(joint[d]):.2f}', 'same 9728-D input in both'))
 
     # comparison with the earlier same-input records (sameinput study, 9728-D)
     cmp = []
@@ -653,12 +653,12 @@ def main():
             for T in (to, tn):
                 cell = T[d]; b = max((m for m in cell if m in group), key=lambda m: st.mean(cell[m]['AFA']))
                 res.append(f"{nm(b)} {st.mean(cell[b]['AFA']):.2f}; lead {st.mean(cell['main']['AFA'])-st.mean(cell[b]['AFA']):+.2f}")
-            old_vs_new.append(('Table I (further)', f'{DNAME[d]}: {label}', res[0], res[1], ''))
+            old_vs_new.append(('Table 2 (further)', f'{DNAME[d]}: {label}', res[0], res[1], ''))
         bo, bn = strongest(to[d])[0], strongest(tn[d])[0]
         afr_o = st.mean(to[d]['main']['AFR'])-st.mean(to[d][bo]['AFR']); afr_n = st.mean(tn[d]['main']['AFR'])-st.mean(tn[d][bn]['AFR'])
-        old_vs_new.append(('Table I (further)', f'{DNAME[d]}: WiMoT AFR minus AFR of the strongest baseline (pp)', f'{afr_o:+.2f}', f'{afr_n:+.2f}', ''))
+        old_vs_new.append(('Table 2 (further)', f'{DNAME[d]}: WiMoT AFR minus AFR of the strongest baseline (pp)', f'{afr_o:+.2f}', f'{afr_n:+.2f}', ''))
         better = lambda T: sum(st.mean(T[d]['main']['AFA']) > st.mean(v['AFA']) for m, v in T[d].items() if m != 'main')
-        old_vs_new.append(('Table I (further)', f'{DNAME[d]}: baselines with lower mean AFA than WiMoT', f'{better(to)} of 21', f'{better(tn)} of 21', ''))
+        old_vs_new.append(('Table 2 (further)', f'{DNAME[d]}: baselines with lower mean AFA than WiMoT', f'{better(to)} of 21', f'{better(tn)} of 21', ''))
     # per-user final accuracy on Widar3.0 (WiMoT against the best baseline on each user)
     def per_user(T):
         cell = T['widar']; k = len(cell['main']['matrix'][0])
@@ -667,7 +667,7 @@ def main():
         diff = [fin['main'][u]-fin[best[u]][u] for u in range(k)]
         return diff, best, fin['main']
     do, bo_, _ = per_user(to); dn, bn_, _ = per_user(tn)
-    old_vs_new.append(('Table I (further)', 'Widar3.0: WiMoT final accuracy minus best baseline, users 1-8 (range, pp); users where WiMoT is highest',
+    old_vs_new.append(('Table 2 (further)', 'Widar3.0: WiMoT final accuracy minus best baseline, users 1-8 (range, pp); users where WiMoT is highest',
                        f'{min(do[:8]):+.1f} to {max(do[:8]):+.1f}; {sum(x > 0 for x in do)} of 9', f'{min(dn[:8]):+.1f} to {max(dn[:8]):+.1f}; {sum(x > 0 for x in dn)} of 9', f'last user: {do[8]:+.1f} -> {dn[8]:+.1f}'))
     rows = [(u+1, do[u], nm(bo_[u]), dn[u], nm(bn_[u])) for u in range(len(do))]
     write_csv(out/'main'/'widar_per_user_lead.csv', ('user_index', 'lead_old9216_pp', 'best_old9216', 'lead_new_pp', 'best_new'), rows)
@@ -691,7 +691,7 @@ def main():
     write_csv(out/'old_vs_new.csv', ('section', 'quantity', 'old (9216-D baselines)', 'new (9728-D baselines)', 'note'), old_vs_new)
     sections = defaultdict(list)
     for r in old_vs_new: sections[r[0]].append(r[1:])
-    md = ['# Old and new numbers that depend on the baselines\n', 'Old: baselines read the 9216-D Mantis block (paper Table I). New: baselines read the 9728-D input of WiMoT. WiMoT is unchanged.\n']
+    md = ['# Old and new numbers that depend on the baselines\n', 'Old: baselines read the 9216-D Mantis block (paper Table 2). New: baselines read the 9728-D input of WiMoT. WiMoT is unchanged.\n']
     for s, rows_ in sections.items():
         md += [f'\n## {s}\n', md_table(['Quantity', 'Old', 'New', 'Note'], rows_)]
     (out/'old_vs_new.md').write_text('\n'.join(md)+'\n')

@@ -4,7 +4,7 @@ Reads results/additional_analyses/loss_weight_sweep/summary.csv (written by scri
 results/reference_results_same_input.json; writes a 2 x 3 figure (rows: lambda_sc and lambda_h; columns: datasets) to
 assets/loss_weight_sweep.png and results/additional_analyses/loss_weight_sweep/loss_weight_sweep_afa.{png,pdf}.
 Shaded band: +-1 sample SD over seeds. Star and dashed vertical line: the weight of the paper. Dashed horizontal line: the
-strongest baseline of Table I in the same seeds. The weight 0 is drawn at the left end, separated by an axis break.
+strongest baseline of Table 2 in the same seeds. The weight 0 is drawn at the left end, separated by an axis break.
 
     python scripts/plot_loss_sweep.py
 """
@@ -87,7 +87,7 @@ def main():
         axes[0][j].set_ylim(lo - pad, hi + pad)
     h = [plt.Line2D([], [], color=BLUE, marker='o', ms=3.2, lw=1.3), plt.Line2D([], [], color=ORANGE, marker='o', mfc='white', ls='', ms=4.2),
          plt.Line2D([], [], color=ORANGE, marker='*', ls=':', ms=9, mec='black', mew=0.4), plt.Line2D([], [], color=GREY, ls='--', lw=0.9)]
-    fig.legend(h, ['WiMoT, mean $\\pm$ 1 SD over seeds 42-44', 'loss removed (weight 0)', 'weight of the paper', 'strongest baseline (Table I)'],
+    fig.legend(h, ['WiMoT, mean $\\pm$ 1 SD over seeds 42-44', 'loss removed (weight 0)', 'weight of the paper', 'strongest baseline (Table 2)'],
                loc='lower center', ncol=4, fontsize=7, frameon=False, bbox_to_anchor=(0.5, -0.005))
     fig.tight_layout(rect=(0, 0.045, 1, 1), h_pad=1.2, w_pad=1.0)
     out = ROOT / 'results/additional_analyses/loss_weight_sweep'

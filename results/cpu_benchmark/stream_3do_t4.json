@@ -1,0 +1,55 @@
+{
+ "part": "stream",
+ "dataset": "3do",
+ "machine": {
+  "cpu": "Apple M4 Pro",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "python": "3.13.5",
+  "torch": "2.8.0",
+  "threads": 4,
+  "torch_threads": 4
+ },
+ "stages": [
+  {
+   "domain": "d1",
+   "train_samples": 2400,
+   "update_s": 18.239449791028164,
+   "readout_refit_s": 0.13926924920345632,
+   "head_per_query_s": 6.14598003870383e-05,
+   "head_call_1_s": 0.13933070900384337,
+   "head_call_n_s": 0.17073666700161994,
+   "head_n": 512,
+   "mean_seen_accuracy": 0.9616666666666667,
+   "storage_mib": 6.011741638183594,
+   "peak_rss_mib": 1684.140625
+  },
+  {
+   "domain": "d2",
+   "train_samples": 2400,
+   "update_s": 2.225107875012327,
+   "readout_refit_s": 0.18163461782564017,
+   "head_per_query_s": 7.77161604298348e-05,
+   "head_call_1_s": 0.18171233398607,
+   "head_call_n_s": 0.2214252919657156,
+   "head_n": 512,
+   "mean_seen_accuracy": 0.97,
+   "storage_mib": 12.023483276367188,
+   "peak_rss_mib": 1801.203125
+  },
+  {
+   "domain": "d3",
+   "train_samples": 2400,
+   "update_s": 2.448296707996633,
+   "readout_refit_s": 0.25037828171826215,
+   "head_per_query_s": 9.159327982678834e-05,
+   "head_call_1_s": 0.2504698749980889,
+   "head_call_n_s": 0.29727404098957777,
+   "head_n": 512,
+   "mean_seen_accuracy": 0.9411111111111111,
+   "storage_mib": 18.03522491455078,
+   "peak_rss_mib": 1994.21875
+  }
+ ],
+ "final_average_accuracy": 0.9411111111111111,
+ "peak_rss_mib": 1995.96875
+}

@@ -63,7 +63,7 @@ current adapter.</sub></p>
   and Widar3.0 (+13.11 pp) in the main setting, and on par on WiMANS (+0.41 ± 0.64 pp of average final accuracy, with
   0.00 against 2.78 pp of forgetting). WiMoT forgets at most 0.58 pp on all three streams.
 
-| Design question | Component | What it protects | Evidence from removal (paper, Table IV and Supplementary Table S10) |
+| Design question | Component | What it protects | Evidence from removal (paper, Table 4 and Supplementary Table S10) |
 |---|---|---|---|
 | How to adapt without invalidating the memory? | Affine adapter on a frozen basis; moments moved by the same map | Validity of the stored memory | Frozen adapter: AFA −1.07 / −3.33 / −5.93 pp |
 | How to learn the new domain without forgetting, with no samples? | SupCon (plasticity) and the historical loss (stability) | Learning of the new domain; the representation | Without SupCon: new-domain accuracy −5.60 to −6.85 pp. Without the historical loss: AFR +0.36 to +1.11 pp |
@@ -73,7 +73,7 @@ current adapter.</sub></p>
 
 Average final accuracy (AFA, %, higher is better) and average forgetting (AFR, percentage points, lower is better) after
 the last domain; mean ± sample SD over seeds 42–44. All methods receive the 9728-dimensional input (the
-frozen 9216-dimensional MantisV2 features and the 512-dimensional amplitude descriptor). The full table of 21 baselines is Table I of the paper; all values below are
+frozen 9216-dimensional MantisV2 features and the 512-dimensional amplitude descriptor). The full table of 21 baselines is Table 2 of the paper; all values below are
 computed from [`results/reference_results_same_input.json`](results/reference_results_same_input.json) by
 [`scripts/readme_numbers.py`](scripts/readme_numbers.py).
 
@@ -99,7 +99,7 @@ later-domain labels MAS is higher by 1.23 and 1.44 pp, and with five other found
 
 **Plasticity and stability.** New-domain accuracy (mean accuracy on the domain learned in each update, a measure of
 plasticity), accuracy on earlier domains after the last update, and AFR, computed from the stored accuracy matrices of the
-same runs by [`scripts/plasticity_stability.py`](scripts/plasticity_stability.py) (paper: Table III).
+same runs by [`scripts/plasticity_stability.py`](scripts/plasticity_stability.py) (paper: Table 3).
 
 | Method | 3DO new / earlier / AFR | WiMANS new / earlier / AFR | Widar3.0 new / earlier / AFR |
 |---|:-:|:-:|:-:|
@@ -117,7 +117,7 @@ learns the new domain 3.49 pp (3DO, A-GEM, AFR 14.64 pp), 2.62 pp (WiMANS, MAS+E
 better than WiMoT; WiMoT's forgetting stays at most 0.58 pp, so it balances learning the new domain and keeping the earlier ones.
 
 Beyond the main setting (leads over the strongest baseline that was run in each setting, mean AFA, three seeds; paper Fig. 4,
-Tables VI–IX, and Supplementary Tables S1–S6; the baselines of all these settings receive the 9728-dimensional input, except those of the five-seed study, which receive the 9216-dimensional Mantis block):
+Tables 6–9, and Supplementary Tables S1–S6; the baselines of all these settings receive the 9728-dimensional input, except those of the five-seed study, which receive the 9216-dimensional Mantis block):
 
 - **Domain orders:** ahead in all six domain orders of 3DO (+1.13 to +6.81 pp) and in three further user orders of
   Widar3.0 (+9.58 to +14.52 pp); on WiMANS ahead in three of six orders (+0.41 to +1.85 pp) and behind in three (−0.93 to −1.95 pp).
@@ -132,7 +132,7 @@ Tables VI–IX, and Supplementary Tables S1–S6; the baselines of all these set
 
 ## Additional analyses
 
-Two analyses of the design (paper Table IV, Supplementary Sections S-VIII and S-IX); they change no coefficient of the main results.
+Two analyses of the design (paper Table 4, Supplementary Sections S8 and S9); they change no coefficient of the main results.
 
 **Classifier ablation.** Each classifier is fitted on the same adapters and stored moments of the full method (AFA, %, mean ± sample SD over seeds 42–46;
 [`scripts/ablation_readout.py`](scripts/ablation_readout.py), results in [`results/additional_analyses/readout_ablation/`](results/additional_analyses/readout_ablation/)).
@@ -161,6 +161,27 @@ within about one seed SD of the setting of the paper (λ<sub>sc</sub> = 0.5, λ<
 (+0.09 pp without SupCon in later domains, −0.08 pp without the historical loss, both within the seed SD); on 3DO the effect of removing
 the historical loss is visible in AFR (0.43 against 0.32 pp), and removing SupCon in every domain lowers AFA by 2.17 pp. Because AdamW is
 invariant to the scale of the loss, only the ratio λ<sub>sc</sub>/λ<sub>h</sub> matters: settings with equal ratio give identical accuracy matrices (maximum difference 0.00 pp).
+
+## Measured CPU cost
+
+The released implementation on a laptop CPU without a GPU (Apple M4 Pro, float32, seed 42; four threads, one thread in parentheses;
+paper Table 10; [`scripts/cpu_benchmark.py`](scripts/cpu_benchmark.py), [`experiments/run_cpu_benchmark.sh`](experiments/run_cpu_benchmark.sh),
+results in [`results/cpu_benchmark/`](results/cpu_benchmark/)). The AFA of these runs equals that of the GPU runs with the same seed on WiMANS and Widar3.0 and differs from it by at most 0.08 pp on 3DO (94.11% with four threads and 94.17% with one, against 94.08%).
+
+| Quantity | 3DO | WiMANS | Widar3.0 |
+|---|:-:|:-:|:-:|
+| Query, encoder (ms) | 33 (61) | 158 (324) | 320 (724) |
+| Query, classifier (ms) | < 0.1 | < 0.3 | < 0.5 |
+| First domain, training (s) | 18.4 (27.0) | 3.7 (4.5) | 3.8 (5.2) |
+| Later domain, update (s)¹ | 2.4–2.7 | 2.2–4.5 | 1.3–24.6 |
+| Arrival encoding per domain (s) | 96 (162) | 62 (141) | 144–145 (352–354) |
+| Peak memory, query encoding (GiB) | 0.79 | 2.38 | 4.47 |
+| Peak memory, updates (GiB) | 1.95 | 0.82 | 1.34 |
+
+<sub>Query times are medians over 20 queries. ¹ Adapter training, moment transport, and classifier refit after the first domain; the encoding of the arrivals is listed separately.
+`WiMoT.predict_proba` refits the classifier on every call, so the classifier time per query is the slope between a 1-row and a 512-row call.
+The encoder interpolates every channel to 512 samples, so it was timed on random windows of the prepared shape (3DO 52 × 351, WiMANS 270 × 300, Widar3.0 540 × 300).
+On Widar3.0 the update time grows with the number of stored domains (1.3 s at the second user, 24.6 s at the ninth). The laptop is faster than typical edge hardware.</sub>
 
 ## How it works
 
@@ -287,15 +308,15 @@ python scripts/check_predictions.py                                    # shipped
 
 | Study | Paper | Trajectories |
 |---|---|---|
-| `main` | Tables I, III; Fig. 3; Supplementary Tables S2, S7, S9 | 198 |
-| `ablation` | Table IV; Supplementary Table S10 | 120 |
+| `main` | Tables 2, 3; Fig. 3; Supplementary Tables S2, S7, S9 | 198 |
+| `ablation` | Table 4; Supplementary Table S10 | 120 |
 | `sameinput` | Supplementary Table S8 | 180 |
-| `backbone` | Table VIII; Supplementary Tables S4, S5 | 324 |
-| `widarext` | Table VI; Fig. 4 | 90 |
-| `orders` | Table VII; Supplementary Table S1; Fig. 4 | 450 |
+| `backbone` | Table 8; Supplementary Tables S4, S5 | 324 |
+| `widarext` | Table 6; Fig. 4 | 90 |
+| `orders` | Table 7; Supplementary Table S1; Fig. 4 | 450 |
 | `fewlabel` | Supplementary Table S3; Fig. 4 | 198 |
-| `memory` | Table IX; Supplementary Table S6 | 45 |
-| `extra_seeds` | Supplementary Section S-IV-A (additional seeds) | 56 |
+| `memory` | Table 9; Supplementary Table S6 | 45 |
+| `extra_seeds` | Supplementary Section S4.1 (additional seeds) | 56 |
 
 The job lists of the baselines with the 9728-dimensional input are in `configs/jobs_sameall/` (`python -m wimot.study sameall_<study>`, coefficients in `configs/locks_sameinput_all.json`); their records are in `results/same_input/` and are merged with the records of the method by `scripts/merge_same_input.py`. The trajectory counts above are those of the job lists with the 9216-dimensional Mantis block.
 
@@ -307,10 +328,10 @@ The job lists of the baselines with the 9728-dimensional input are in `configs/j
 wimot/            package: method/ (model, moments, historical loss, OSCL classifier), baselines/, features/, data/, run.py, study.py, api.py
 configs/          streams, training protocol, locked coefficients, job lists (jobs/*.tsv), array digests
 data/splits/      partition manifests of the three streams (440 KB)
-results/          reference results (baselines with the 9216-D and 9728-D inputs), stage-wise test predictions (1337 trajectories), coefficient selection, additional analyses
+results/          reference results (baselines with the 9216-D and 9728-D inputs), stage-wise test predictions (1337 trajectories), coefficient selection, additional analyses, CPU benchmark
 scripts/          smoke_test.py, build_tables.py, check_predictions.py, readme_numbers.py, plasticity_stability.py, plot_stagewise.py, make_jobs.py,
-                  make_jobs_same_input.py, same_input_report.py, merge_same_input.py, ablation_readout.py, ablation_loss_sweep.py, plot_loss_sweep.py, select_coefficients.py
-experiments/      shell entry points for data, features, and one table
+                  make_jobs_same_input.py, same_input_report.py, merge_same_input.py, ablation_readout.py, ablation_loss_sweep.py, plot_loss_sweep.py, select_coefficients.py, cpu_benchmark.py
+experiments/      shell entry points for data, features, one table, and the CPU benchmark
 docs/             REPRODUCE.md
 assets/           figures of this README
 tests/            fast consistency checks (CPU)

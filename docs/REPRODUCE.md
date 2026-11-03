@@ -106,20 +106,20 @@ python scripts/build_tables.py --reference-only --study <study>        # the pap
 
 | Study | Paper | Trajectories |
 |---|---|---|
-| `main` | Tables I, III; Fig. 3 (stage-wise accuracies); Supplementary Tables S2, S7, S9 (baselines: 9728-D input, see below) | 198 |
-| `ablation` | Table IV; Supplementary Table S10 (seeds 42-46) | 120 |
+| `main` | Tables 2, 3; Fig. 3 (stage-wise accuracies); Supplementary Tables S2, S7, S9 (baselines: 9728-D input, see below) | 198 |
+| `ablation` | Table 4; Supplementary Table S10 (seeds 42-46) | 120 |
 | `sameinput` | Supplementary Table S8 (with the joint-training reference) | 180 |
-| `backbone` | Table VIII; Supplementary Tables S4, S5 (needs `FEATURES/<encoder>/`) | 324 |
-| `widarext` | Table VI; Fig. 4 | 90 |
-| `orders` | Table VII; Supplementary Table S1; Fig. 4 | 450 |
+| `backbone` | Table 8; Supplementary Tables S4, S5 (needs `FEATURES/<encoder>/`) | 324 |
+| `widarext` | Table 6; Fig. 4 | 90 |
+| `orders` | Table 7; Supplementary Table S1; Fig. 4 | 450 |
 | `fewlabel` | Supplementary Table S3; Fig. 4 | 198 |
-| `memory` | Table IX (storage); Supplementary Table S6 | 45 |
-| `extra_seeds` | Supplementary Section S-IV-A, "Additional Seeds and Reproducibility" (seeds 45, 46) | 56 |
+| `memory` | Table 9 (storage); Supplementary Table S6 | 45 |
+| `extra_seeds` | Supplementary Section S4.1, "Additional Seeds and Reproducibility" (seeds 45, 46) | 56 |
 
 The baselines of `main`, `orders`, `fewlabel`, `widarext` (including Widar3.0 rooms 2 and 3), and `backbone` (encoder study) in the paper tables use the 9728-D input described below; the trajectory counts
 above are those of the job lists of `configs/jobs/` (WiMoT, the ablations, and the baselines with the 9216-D Mantis block). The storage study (`memory`) and the five-seed study (`extra_seeds`) use the 9216-D input.
 
-The plasticity and stability measures of Table III and Supplementary Table S10 (new-domain accuracy, earlier-domain accuracy after the
+The plasticity and stability measures of Table 3 and Supplementary Table S10 (new-domain accuracy, earlier-domain accuracy after the
 last update, AFR) are recomputed from the stored accuracy matrices, without retraining, by
 `python scripts/plasticity_stability.py` (studies `main` and `ablation`; `--results results/reference_results.json` for the 9216-D baselines).
 `python scripts/readme_numbers.py` prints every number quoted in the README, including the leads against the 9216-D baselines, and
@@ -127,8 +127,8 @@ last update, AFR) are recomputed from the stored accuracy matrices, without retr
 
 ### Classifier ablation and loss-weight sweep
 
-Table IV (rows OSCL → NCM/LDA/QDA) and Supplementary Section S-VIII fit alternative classifiers on the adapters and stored moments of the
-trained full method, without retraining the adapters; Supplementary Section S-IX retrains the method with other loss weights. Both write to
+Table 4 (rows OSCL → NCM/LDA/QDA) and Supplementary Section S8 fit alternative classifiers on the adapters and stored moments of the
+trained full method, without retraining the adapters; Supplementary Section S9 retrains the method with other loss weights. Both write to
 `results/additional_analyses/`.
 
 ```bash
@@ -142,7 +142,7 @@ The sweep reproduces the accuracy matrices of the ablation rows `no_hist` (weigh
 identically on the same GPU model, and settings with the same ratio of the two weights give identical matrices.
 
 `study.py` trains all trajectories of a table and evaluates on TEST only afterwards. Every trajectory writes `receipt.json`
-(training record, validation matrix) and `test.json` (test accuracy matrix, AFA, AFR). The deployment costs of Table IX
+(training record, validation matrix) and `test.json` (test accuracy matrix, AFA, AFR). The deployment costs of Table 9
 are analytic; the storage column is the `statistic_bytes` field of the `memory` runs.
 
 The coefficients in `configs/locks.json` were selected before any test evaluation from the candidates in
@@ -220,13 +220,31 @@ Measured with four processes sharing one GPU: the `main` table (198 trajectories
 `ablation` table (120 trajectories) 1.8 h. Data preparation runs on CPU: about 1 min per WiMANS room and about
 2 min per Widar3.0 user.
 
+### CPU cost (Table 10)
+
+Table 10 was measured on an Apple M4 Pro laptop (macOS, Python 3.13, torch 2.8.0, no GPU) with four and one threads:
+
+```bash
+pip install -r requirements-features.txt                      # MantisV2 (encoder part only)
+WEIGHTS=/data/weights   experiments/run_cpu_benchmark.sh encoder 4    # and: ... encoder 1
+FEATURES=/data/features experiments/run_cpu_benchmark.sh stream  4    # and: ... stream 1
+```
+
+The script writes `results/cpu_benchmark/<part>_<dataset>_t<threads>.json`; the shipped files are those of the paper.
+`encoder` times the MantisV2 forward pass and the amplitude descriptor of one query on random windows of the prepared
+shape (the encoder cost depends only on the shape, since every channel is interpolated to 512 samples). `stream` learns
+each stream domain by domain with seed 42 through the Python interface and records the update time, the classifier
+refit, the classifier time per query (slope between a 1-row and a 512-row `predict_proba` call), the stored-moment size,
+and the peak resident memory. With four threads the summed update time of a stream is 23 s (3DO), 8 s (WiMANS), and
+58 s (Widar3.0); the repeated classifier calls add to the wall-clock time.
+
 ## Determinism
 
 
 * The method, the classic baselines, CN-DPM, DUCT, and DualCP draw all random numbers from seeded generators, and TF32
   is disabled. On the same GPU model and software stack, a second run reproduces the reference accuracy matrix bitwise; we
   verified this for SI+ER with the Mantis block and with the concatenated input (3DO, seed 42) and for the method,
-  whose repeated runs of Tables I and IV matched 127 of 129 reference matrices bitwise (the other two differ by 0.01 pp).
+  whose repeated runs of Tables 2 and 4 matched 127 of 129 reference matrices bitwise (the other two differ by 0.01 pp).
 * Floating-point results depend on the GPU model. The baselines with the 9216-D Mantis block were trained on a different machine than the 9728-D baselines;
   on the GPU above the same code yields trajectories that differ in the last digits from the first epoch on: for SI+ER, the AFA of the nine
   stream-and-seed trajectories differs by −0.62 to +0.08 pp, with table means within the seed variation. The nine main-setting trajectories of the method are bitwise identical on the two machines.
@@ -234,11 +252,11 @@ Measured with four processes sharing one GPU: the `main` table (198 trajectories
   encoder trajectories bitwise and changed 21 (randomly initialized MantisV2 9, TimesFM 3.0 6, Chronos-2 3, MOMENT-1-large 3) by −0.31 to +0.93 pp AFA per seed; no lead changed its sign and no strongest
   baseline changed (largest change of a mean lead: 0.62 pp, WiMANS with the randomly initialized MantisV2). The six WiMoT trajectories of Widar3.0 rooms 2 and 3 were reproduced bitwise.
   EdgeCL is not bitwise reproducible across machines: with identical code and seeds its per-seed AFA differed by up to 3.06 pp between two machines
-  (Supplementary Section S-V), so differences of this size between EdgeCL runs are not interpreted.
+  (Supplementary Section S5), so differences of this size between EdgeCL runs are not interpreted.
 * ConSense and EdgeCL initialize their weights from the seed but draw dropout masks from the global PyTorch generator,
   which the paper runs did not seed (PyTorch seeds it non-deterministically in every process). Their trajectories are
   therefore reproducible only in distribution. `--global-seed` makes repeated runs deterministic.
-* DUCT is unstable across seeds (SD up to 7.9 pp for DUCT and 31.6 pp for DUCT+ER on WiMANS in Table I), so last-digit differences can change its outcome by
+* DUCT is unstable across seeds (SD up to 7.9 pp for DUCT and 31.6 pp for DUCT+ER on WiMANS in Table 2), so last-digit differences can change its outcome by
   several points.
 * The reduced-label baseline runs were resumed after interruptions and partly ran on CPU; they are reproducible in
   distribution only.
