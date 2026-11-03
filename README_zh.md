@@ -8,7 +8,6 @@
 [![Python 3.12](https://img.shields.io/badge/Python-3.12-3776AB.svg)](requirements.txt)
 [![PyTorch 2.8](https://img.shields.io/badge/PyTorch-2.8-EE4C2C.svg)](requirements.txt)
 [![arXiv](https://img.shields.io/badge/arXiv-2610.32660-b31b1b.svg)](https://arxiv.org/abs/2610.32660)
-[![Paper](https://img.shields.io/badge/Paper-IEEE%20IoT%20J%20(under%20review)-0F62FE.svg)](https://arxiv.org/abs/2610.32660)
 
 [论文（arXiv）](https://arxiv.org/abs/2610.32660) · [PDF](https://arxiv.org/pdf/2610.32660) · [引用](#引用) · [English](README.md)
 
@@ -22,7 +21,7 @@
 微调、SI+ER、MAS+ER、LwF+ER、DER++ 共用首个域的网络，因此在阶段 1 重合。每条曲线的末点即下表的 AFA（WiMoT 为 94.02、89.61、95.16%）。</sub></p>
 
 论文 *WiMoT: Replay-Free Continual Wi-Fi Sensing via Moment Transport*
-（[arXiv:2610.32660](https://arxiv.org/abs/2610.32660)；已投 IEEE Internet of Things Journal）的代码。
+（[arXiv:2610.32660](https://arxiv.org/abs/2610.32660)）的代码。
 WiMoT 是一种免回放的持续学习算法：学习新采集域时不保存任何早期样本。它不存样本，而是在冻结特征基中为每个早期域的每个类别存储特征的均值与协方差。表示发生变化后，这些统计量会过时；WiMoT 把变化限制为仿射适配器，并对存储的统计量施加同一个仿射映射，使其保持有效：仿射映射把均值 μ 变为 Aμ + b、协方差 Σ 变为 AΣAᵀ，与它对样本本身的作用一致。监督对比学习与由存储统计量闭式计算的历史损失在可塑性（学习新域）与稳定性（保持早期域）之间取得平衡；OSCL 分类器（高斯判别分类器）每次更新后按各域等权重重新拟合，预测时无需域 ID。arXiv PDF 在正文之后附有补充材料。
 
 <p align="center">
@@ -197,8 +196,7 @@ labels = model.predict(load("d3", "test")["features"])     # 预测时不需要�
   eprint        = {2610.32660},
   archivePrefix = {arXiv},
   primaryClass  = {cs.AI},
-  url           = {https://arxiv.org/abs/2610.32660},
-  note          = {Submitted to IEEE Internet of Things Journal}
+  url           = {https://arxiv.org/abs/2610.32660}
 }
 ```
 

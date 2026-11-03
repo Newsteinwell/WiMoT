@@ -85,7 +85,7 @@ WiMoT 换了一条路：
 
 WiMoT 想回答的是边缘 Wi-Fi 感知里很现实的约束：**不能（或不愿）长期保存 CSI，又要持续适应新环境。** 做法是把记忆建成类别矩，把表示更新收成仿射，再用同一仿射搬矩。细节、消融和补充实验见 arXiv；复现脚本在 GitHub。
 
-工作已投 IEEE Internet of Things Journal。欢迎讨论和指正。
+论文目前以预印本形式公开在 arXiv 上，欢迎讨论和指正。
 
 - 论文：https://arxiv.org/abs/2610.32660
 - 代码：https://github.com/Newsteinwell/WiMoT

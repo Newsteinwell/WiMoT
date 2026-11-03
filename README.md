@@ -8,7 +8,6 @@
 [![Python 3.12](https://img.shields.io/badge/Python-3.12-3776AB.svg)](requirements.txt)
 [![PyTorch 2.8](https://img.shields.io/badge/PyTorch-2.8-EE4C2C.svg)](requirements.txt)
 [![arXiv](https://img.shields.io/badge/arXiv-2610.32660-b31b1b.svg)](https://arxiv.org/abs/2610.32660)
-[![Paper](https://img.shields.io/badge/Paper-IEEE%20IoT%20J%20(under%20review)-0F62FE.svg)](https://arxiv.org/abs/2610.32660)
 
 [Paper (arXiv)](https://arxiv.org/abs/2610.32660) · [PDF](https://arxiv.org/pdf/2610.32660) · [Citation](#citation) · [中文说明](README_zh.md)
 
@@ -24,7 +23,7 @@ their first-domain network and therefore coincide at stage 1. The last point of 
 (WiMoT: 94.02, 89.61, and 95.16%).</sub></p>
 
 Code for the article *WiMoT: Replay-Free Continual Wi-Fi Sensing via Moment Transport*
-([arXiv:2610.32660](https://arxiv.org/abs/2610.32660); submitted to IEEE Internet of Things Journal).
+([arXiv:2610.32660](https://arxiv.org/abs/2610.32660)).
 WiMoT is a replay-free continual learning algorithm: it learns new acquisition domains without storing any earlier sample.
 The arXiv PDF includes the supplementary material after the main text.
 In place of samples it stores, for each class of every earlier domain, the mean and covariance of its features in a frozen
@@ -329,8 +328,7 @@ If you use this code, please cite the preprint (the entry is updated when the ar
   eprint        = {2610.32660},
   archivePrefix = {arXiv},
   primaryClass  = {cs.AI},
-  url           = {https://arxiv.org/abs/2610.32660},
-  note          = {Submitted to IEEE Internet of Things Journal}
+  url           = {https://arxiv.org/abs/2610.32660}
 }
 ```
 
