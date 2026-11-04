@@ -223,5 +223,8 @@ labels = model.predict(load("d3", "test")["features"])     # 预测时不需要�
 ## 许可与致谢
 
 MIT 许可（见 [LICENSE](LICENSE)）；`duct.py` 与 `cn_dpm.py` 改编自 MIT 许可的代码，详见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
+
+**专利声明。** 中国科学技术大学已就本方法的早期版本提交中国发明专利申请（公开号 CN 123012682 A，公开日 2026 年 10 月 30 日）。MIT 许可仅涉及本代码的著作权，不授予该专利申请及其授权专利下的任何权利。欢迎用于学术研究；如需将本方法用于商业用途，请联系作者。
+
 感谢数据集提供者：3DO（J. Strohmayer 与 M. Kampel）、WiMANS（S. Huang 等）、Widar3.0（Y. Zheng 等），以及提供冻结编码器的 MantisV2
 （[`paris-noah/MantisV2`](https://huggingface.co/paris-noah/MantisV2)，[`mantis-tsfm`](https://github.com/vfeofanov/mantis)）的作者。使用数据集和模型权重前请接受各自的使用条款。

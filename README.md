@@ -359,6 +359,11 @@ MIT, see [LICENSE](LICENSE). `wimot/baselines/duct.py` and `wimot/baselines/cn_d
 whose notices they retain; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for these files, the dependencies, and the
 model weights.
 
+**Patent notice.** The University of Science and Technology of China has filed a Chinese invention patent application on an
+earlier version of the method (CN 123012682 A, published 30 October 2026). The MIT License covers the copyright of this code and
+is not intended to grant rights under that application or any patent issuing from it. Research use is welcome; for commercial
+use of the method, please contact the authors.
+
 ## Acknowledgments
 
 We thank the providers of the datasets: 3DO (J. Strohmayer and M. Kampel, Zenodo
