@@ -1,0 +1,32 @@
+{
+  "description": "Coefficients selected before any test evaluation by the rule in protocol.json (seed-42 validation AFA averaged over 3DO and WiMANS). 'validation_mean' is the selection score of the chosen value. These values are used for every table; scripts/select_coefficients.py recomputes them.",
+  "classic": {
+    "ewc": {"coefficient": 10000.0, "validation_mean": 0.8538},
+    "ewc_er": {"coefficient": 1.0, "validation_mean": 0.8764},
+    "si": {"coefficient": 10.0, "validation_mean": 0.8889},
+    "si_er": {"coefficient": 10.0, "validation_mean": 0.8940},
+    "mas": {"coefficient": 1.0, "validation_mean": 0.8975},
+    "mas_er": {"coefficient": 1.0, "validation_mean": 0.8931},
+    "lwf": {"coefficient": 0.5, "validation_mean": 0.8697},
+    "lwf_er": {"coefficient": 0.5, "validation_mean": 0.8831}
+  },
+  "wifi": {
+    "consense": {"coefficient": 1.0, "validation_mean": 0.8207},
+    "edgecl": {"coefficient": 0.01, "validation_mean": 0.8665}
+  },
+  "recent": {
+    "duct": {"coefficient": 0.5, "validation_mean": 0.8369},
+    "dualcp": {"coefficient": 0.1, "validation_mean": 0.7423},
+    "vanillacp": {"coefficient": 1.0, "validation_mean": 0.7610},
+    "cn_dpm_aligned": {"coefficient": -10.0, "validation_mean": 0.8708},
+    "duct_er": {"coefficient": 0.5, "validation_mean": 0.8154},
+    "dualcp_er": {"coefficient": 0.1, "validation_mean": 0.7795},
+    "vanillacp_er": {"coefficient": 1.0, "validation_mean": 0.7871}
+  },
+  "same_input": {
+    "description": "Coefficients re-selected per input for the same-input study (Table sameinput); m9216 reuses the main locks.",
+    "si_er": {"m9216": 10.0, "cat9728": 10.0, "stem9344": 10.0, "amp512": 10.0},
+    "edgecl": {"m9216": 0.01, "cat9728": 0.03, "amp512": 0.01},
+    "cn_dpm_aligned": {"m9216": -10.0, "cat9728": -10.0, "amp512": -10.0}
+  }
+}

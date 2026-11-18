@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+*.npz
+!results/stagewise_test_predictions.npz
+*.pt
+*.npy
+*.dat
+*.zip
+/runs/
+/features/
+/prepared/
+/weights/
+/dist/

@@ -1,0 +1,11 @@
+# Core: training, evaluation, tables, tests (the versions used for every reported number).
+# Linux + NVIDIA GPU: install the CUDA build of torch first, e.g.
+#   pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/cu128
+# macOS / CPU-only: the default PyPI wheel is used.
+torch==2.8.0
+numpy==2.3.2
+scipy==1.18.1
+pytest
+# Data preparation:        pip install -r requirements-data.txt
+# Feature extraction:      pip install -r requirements-features.txt
+# Backbone-study encoders: separate environments (see docs/REPRODUCE.md)

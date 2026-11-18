@@ -1,0 +1,55 @@
+{
+ "part": "stream",
+ "dataset": "wimans",
+ "machine": {
+  "cpu": "Apple M4 Pro",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "python": "3.13.5",
+  "torch": "2.8.0",
+  "threads": 1,
+  "torch_threads": 1
+ },
+ "stages": [
+  {
+   "domain": "classroom",
+   "train_samples": 378,
+   "update_s": 4.287651999969967,
+   "readout_refit_s": 0.24692813197377128,
+   "head_per_query_s": 0.0001471179910656935,
+   "head_call_1_s": 0.24707524996483698,
+   "head_call_n_s": 0.2628168750088662,
+   "head_n": 108,
+   "mean_seen_accuracy": 0.8888888888888888,
+   "storage_mib": 18.03522491455078,
+   "peak_rss_mib": 780.109375
+  },
+  {
+   "domain": "meeting_room",
+   "train_samples": 378,
+   "update_s": 1.659894666983746,
+   "readout_refit_s": 0.7421180317749616,
+   "head_per_query_s": -0.00010778178585433337,
+   "head_call_1_s": 0.7420102499891073,
+   "head_call_n_s": 0.7188371660304256,
+   "head_n": 216,
+   "mean_seen_accuracy": 0.9074074074074074,
+   "storage_mib": 36.07044982910156,
+   "peak_rss_mib": 789.453125
+  },
+  {
+   "domain": "empty_room",
+   "train_samples": 378,
+   "update_s": 3.2118087919661775,
+   "readout_refit_s": 1.4092243655769288,
+   "head_per_query_s": 0.0002317594179750965,
+   "head_call_1_s": 1.4094561249949038,
+   "head_call_n_s": 1.48431441700086,
+   "head_n": 324,
+   "mean_seen_accuracy": 0.8919753086419754,
+   "storage_mib": 54.105674743652344,
+   "peak_rss_mib": 847.46875
+  }
+ ],
+ "final_average_accuracy": 0.8919753086419754,
+ "peak_rss_mib": 849.265625
+}

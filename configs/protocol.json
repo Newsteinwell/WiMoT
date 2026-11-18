@@ -1,0 +1,64 @@
+{
+  "training": {
+    "first_epochs": 100,
+    "later_epochs": 50,
+    "batch_size": 128,
+    "lr": 0.001,
+    "weight_decay": 0.0001
+  },
+  "method": {
+    "supcon_temperature": 0.07,
+    "supcon_weight": 0.5,
+    "pca_dimension": 256,
+    "residual_projection_seed": 20261011,
+    "readout": {
+      "kappa": 0.25,
+      "white_rho": 0.5,
+      "precondition_rho": 0.1,
+      "alpha": 1.0,
+      "gamma": 0.5,
+      "mean_prior_strength": 0.5,
+      "maxiter": 200,
+      "degrees_of_freedom": [3, 10, 30],
+      "gate_modes": ["gaussian", "student"],
+      "calibration_seed": 42
+    }
+  },
+  "classic": {
+    "methods": ["ft", "er", "ewc", "ewc_er", "si", "si_er", "mas", "mas_er", "lwf", "lwf_er", "derpp", "agem"],
+    "coefficient_grids": {
+      "ewc": [1.0, 100.0, 10000.0],
+      "si": [0.1, 1.0, 10.0],
+      "mas": [0.1, 1.0, 10.0],
+      "lwf": [0.5, 1.0, 2.0]
+    }
+  },
+  "wifi": {
+    "methods": ["consense", "edgecl"],
+    "common": {"first_epochs": 100, "epochs": 50, "batch_size": 128, "lr": 0.001},
+    "consense": {"heads": 8, "dropout": 0.1, "bottleneck": 64},
+    "edgecl": {"beta": 0.9, "eta": 2.0, "hidden": 128, "latent": 64, "heads": 8, "layers": 2, "dropout": 0.1},
+    "replay": {"consense": false, "edgecl": true},
+    "candidates": {"consense": [0.01, 0.1, 1.0], "edgecl": [0.01, 0.03, 0.1]}
+  },
+  "recent": {
+    "methods": ["duct", "dualcp", "vanillacp", "cn_dpm_aligned", "duct_er", "dualcp_er", "vanillacp_er"],
+    "duct": {"hidden_dim": 512, "feature_dim": 128, "first_epochs": 100, "epochs": 50, "retrain_epochs": 5,
+             "batch_size": 128, "learning_rate": 0.1, "backbone_lr_scale": 0.01, "head_merge_ratio": 0.25, "ot_reg": 0.01},
+    "dualcp": {"hidden_dim": 512, "first_epochs": 100, "epochs": 50, "lr": 0.1, "batch_size": 128, "alpha": 0.5},
+    "candidates": {
+      "duct": [0.1, 0.25, 0.5],
+      "dualcp": [0.1, 0.5],
+      "vanillacp": [1.0],
+      "cn_dpm_aligned": [-10.0, 0.0, 10.0],
+      "duct_er": [0.1, 0.25, 0.5],
+      "dualcp_er": [0.1, 0.5],
+      "vanillacp_er": [1.0]
+    }
+  },
+  "selection": {
+    "seed": 42,
+    "datasets": ["3do", "wimans"],
+    "rule": "Maximum mean seed-42 validation AFA over 3DO and WiMANS (first maximum on ties); the selected value is then used for every seed, order, stream and label budget."
+  }
+}

@@ -1,0 +1,24 @@
+{
+ "part": "encoder",
+ "dataset": "widar",
+ "input_shape": [
+  540,
+  512
+ ],
+ "machine": {
+  "cpu": "Apple M4 Pro",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "python": "3.13.5",
+  "torch": "2.8.0",
+  "threads": 1,
+  "torch_threads": 1
+ },
+ "per_query": {
+  "median_s": 0.7237341039872263,
+  "p90_s": 0.7286868297902401,
+  "min_s": 0.7183385839452967,
+  "repeats": 20
+ },
+ "per_recording_in_pairs_s": 0.7864621039916528,
+ "peak_rss_mib": 4736.828125
+}

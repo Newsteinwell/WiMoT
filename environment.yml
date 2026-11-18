@@ -1,0 +1,15 @@
+name: wimot
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip
+  - pip:
+      - --extra-index-url https://download.pytorch.org/whl/cu128
+      - torch==2.8.0+cu128
+      - numpy==2.3.2
+      - scipy==1.18.1
+      - pandas>=2.2
+      - csiread==1.4.1
+      - mantis-tsfm==1.1.0
+      - pytest

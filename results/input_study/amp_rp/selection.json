@@ -1,0 +1,221 @@
+{
+  "tag": "amp_rp",
+  "rule": "Maximum mean seed-42 validation AFA over 3DO and WiMANS (first maximum on ties); the selected value is then used for every seed, order, stream and label budget.",
+  "selected": {
+    "classic/ft": {
+      "coefficient": null,
+      "scores": null,
+      "note": "single candidate"
+    },
+    "classic/er": {
+      "coefficient": null,
+      "scores": null,
+      "note": "single candidate"
+    },
+    "classic/ewc": {
+      "coefficient": 100.0,
+      "candidates": [
+        1.0,
+        100.0,
+        10000.0
+      ],
+      "scores": [
+        0.4557716049382716,
+        0.4705864197530864,
+        0.4622530864197531
+      ]
+    },
+    "classic/ewc_er": {
+      "coefficient": 1.0,
+      "candidates": [
+        1.0,
+        100.0,
+        10000.0
+      ],
+      "scores": [
+        0.6274691358024692,
+        0.6183641975308641,
+        0.6081172839506174
+      ]
+    },
+    "classic/si": {
+      "coefficient": 10.0,
+      "candidates": [
+        0.1,
+        1.0,
+        10.0
+      ],
+      "scores": [
+        0.4557407407407408,
+        0.4598148148148148,
+        0.4710493827160494
+      ]
+    },
+    "classic/si_er": {
+      "coefficient": 0.1,
+      "candidates": [
+        0.1,
+        1.0,
+        10.0
+      ],
+      "scores": [
+        0.626358024691358,
+        0.6212962962962963,
+        0.6212962962962963
+      ]
+    },
+    "classic/mas": {
+      "coefficient": 10.0,
+      "candidates": [
+        0.1,
+        1.0,
+        10.0
+      ],
+      "scores": [
+        0.4987037037037037,
+        0.5269135802469136,
+        0.5514814814814815
+      ]
+    },
+    "classic/mas_er": {
+      "coefficient": 0.1,
+      "candidates": [
+        0.1,
+        1.0,
+        10.0
+      ],
+      "scores": [
+        0.6094753086419753,
+        0.5861728395061728,
+        0.566111111111111
+      ]
+    },
+    "classic/lwf": {
+      "coefficient": 0.5,
+      "candidates": [
+        0.5,
+        1.0,
+        2.0
+      ],
+      "scores": [
+        0.4862962962962963,
+        0.4352469135802469,
+        0.42685185185185187
+      ]
+    },
+    "classic/lwf_er": {
+      "coefficient": 0.5,
+      "candidates": [
+        0.5,
+        1.0,
+        2.0
+      ],
+      "scores": [
+        0.6024691358024692,
+        0.5646296296296296,
+        0.5514506172839506
+      ]
+    },
+    "classic/derpp": {
+      "coefficient": null,
+      "scores": null,
+      "note": "single candidate"
+    },
+    "classic/agem": {
+      "coefficient": null,
+      "scores": null,
+      "note": "single candidate"
+    },
+    "wifi/consense": {
+      "coefficient": 0.01,
+      "candidates": [
+        0.01,
+        0.1,
+        1.0
+      ],
+      "scores": [
+        0.5474074074074073,
+        0.5447530864197532,
+        0.5302469135802469
+      ]
+    },
+    "wifi/edgecl": {
+      "coefficient": 0.03,
+      "candidates": [
+        0.01,
+        0.03,
+        0.1
+      ],
+      "scores": [
+        0.6276234567901234,
+        0.6402777777777778,
+        0.6254012345679012
+      ]
+    },
+    "recent/duct": {
+      "coefficient": null,
+      "candidates": [
+        0.1,
+        0.25,
+        0.5
+      ],
+      "scores": null,
+      "note": "not runnable on this input: RuntimeError('Sinkhorn failed to satisfy marginal masses: error=1.287699882390747e-06')"
+    },
+    "recent/dualcp": {
+      "coefficient": 0.1,
+      "candidates": [
+        0.1,
+        0.5
+      ],
+      "scores": [
+        0.6303395061728394,
+        0.619537037037037
+      ]
+    },
+    "recent/vanillacp": {
+      "coefficient": 1.0,
+      "scores": null,
+      "note": "single candidate"
+    },
+    "recent/cn_dpm_aligned": {
+      "coefficient": 0.0,
+      "candidates": [
+        -10.0,
+        0.0,
+        10.0
+      ],
+      "scores": [
+        0.6151543209876543,
+        0.6165432098765432,
+        0.6013888888888889
+      ]
+    },
+    "recent/duct_er": {
+      "coefficient": null,
+      "candidates": [
+        0.1,
+        0.25,
+        0.5
+      ],
+      "scores": null,
+      "note": "not runnable on this input: RuntimeError('Sinkhorn failed to satisfy marginal masses: error=1.287699882390747e-06')"
+    },
+    "recent/dualcp_er": {
+      "coefficient": 0.1,
+      "candidates": [
+        0.1,
+        0.5
+      ],
+      "scores": [
+        0.6453086419753087,
+        0.6391358024691358
+      ]
+    },
+    "recent/vanillacp_er": {
+      "coefficient": 1.0,
+      "scores": null,
+      "note": "single candidate"
+    }
+  }
+}

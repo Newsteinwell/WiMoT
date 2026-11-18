@@ -1,0 +1,32 @@
+{
+  "3do": {
+    "domains": ["d1", "d2", "d3"],
+    "classes": 3,
+    "label_names": ["w", "s", "l"],
+    "description": "3DO, three acquisition days as domains, three activities (activity codes of the released session folders)"
+  },
+  "wimans": {
+    "domains": ["classroom", "meeting_room", "empty_room"],
+    "classes": 9,
+    "label_names": ["nothing", "walk", "rotation", "jump", "wave", "lie_down", "pick_up", "sit_down", "stand_up"],
+    "description": "WiMANS single-user 5 GHz recordings, three rooms as domains"
+  },
+  "widar": {
+    "domains": ["user05", "user10", "user11", "user12", "user13", "user14", "user15", "user16", "user17"],
+    "classes": 6,
+    "label_names": ["push_pull", "sweep", "clap", "slide", "draw_o_horizontal", "draw_zigzag_horizontal"],
+    "description": "Widar3.0 Room 1 (2018-11-30), nine users as domains, six gestures"
+  },
+  "widar_r2": {
+    "domains": ["user01", "user06"],
+    "classes": 6,
+    "label_names": ["push_pull", "sweep", "clap", "slide", "draw_o_horizontal", "draw_zigzag_horizontal"],
+    "description": "Widar3.0 Room 2 (archives 20181204, 20181209), two users"
+  },
+  "widar_r3": {
+    "domains": ["user03", "user07", "user08", "user09"],
+    "classes": 6,
+    "label_names": ["push_pull", "sweep", "clap", "slide", "draw_o_horizontal", "draw_zigzag_horizontal"],
+    "description": "Widar3.0 Room 3 (archive 20181211), four users"
+  }
+}

@@ -1,0 +1,217 @@
+method,dataset,seed,coefficient,AFA_percent,AFR_pp
+A-GEM,3do,42,,83.806,21.333
+A-GEM,3do,43,,84.278,21.000
+A-GEM,3do,44,,84.528,20.375
+A-GEM,widar,42,,35.407,56.500
+A-GEM,widar,43,,35.259,55.500
+A-GEM,widar,44,,35.185,55.750
+A-GEM,wimans,42,,31.173,3.704
+A-GEM,wimans,43,,25.617,9.722
+A-GEM,wimans,44,,30.864,5.556
+CN-DPM,3do,42,-10.0,94.361,4.292
+CN-DPM,3do,43,-10.0,94.972,3.958
+CN-DPM,3do,44,-10.0,95.139,3.250
+CN-DPM,widar,42,-10.0,36.370,38.917
+CN-DPM,widar,43,-10.0,38.000,37.167
+CN-DPM,widar,44,-10.0,37.481,37.750
+CN-DPM,wimans,42,-10.0,31.173,-0.926
+CN-DPM,wimans,43,-10.0,28.395,1.852
+CN-DPM,wimans,44,-10.0,31.481,-1.389
+ConSense,3do,42,1.0,85.167,20.125
+ConSense,3do,43,1.0,84.639,20.000
+ConSense,3do,44,1.0,83.944,21.292
+ConSense,widar,42,1.0,30.222,48.667
+ConSense,widar,43,1.0,31.185,49.833
+ConSense,widar,44,1.0,29.185,52.000
+ConSense,wimans,42,1.0,32.716,4.630
+ConSense,wimans,43,1.0,29.630,4.630
+ConSense,wimans,44,1.0,34.568,3.704
+DER++,3do,42,,92.694,2.375
+DER++,3do,43,,92.944,3.333
+DER++,3do,44,,92.500,1.417
+DER++,widar,42,,43.259,45.083
+DER++,widar,43,,45.259,44.083
+DER++,widar,44,,41.333,49.000
+DER++,wimans,42,,32.099,0.463
+DER++,wimans,43,,29.012,6.481
+DER++,wimans,44,,32.407,2.778
+DUCT,3do,42,0.25,83.083,4.875
+DUCT,3do,43,0.25,82.972,8.333
+DUCT,3do,44,0.25,86.139,2.750
+DUCT,widar,42,0.25,21.407,12.917
+DUCT,widar,43,0.25,24.667,12.833
+DUCT,widar,44,0.25,19.556,14.500
+DUCT,wimans,42,0.25,27.778,3.704
+DUCT,wimans,43,0.25,28.704,2.315
+DUCT,wimans,44,0.25,25.000,4.167
+DUCT+ER,3do,42,0.1,81.944,-5.917
+DUCT+ER,3do,43,0.1,83.556,-1.292
+DUCT+ER,3do,44,0.1,83.389,-3.625
+DUCT+ER,widar,42,0.1,21.481,13.750
+DUCT+ER,widar,43,0.1,22.444,10.417
+DUCT+ER,widar,44,0.1,24.444,5.417
+DUCT+ER,wimans,42,0.1,22.531,3.241
+DUCT+ER,wimans,43,0.1,21.296,10.648
+DUCT+ER,wimans,44,0.1,27.778,-4.167
+DualCP,3do,42,0.1,88.333,11.833
+DualCP,3do,43,0.1,88.194,12.083
+DualCP,3do,44,0.1,88.278,11.917
+DualCP,widar,42,0.1,61.778,14.083
+DualCP,widar,43,0.1,62.815,13.583
+DualCP,widar,44,0.1,62.370,13.667
+DualCP,wimans,42,0.1,35.185,2.315
+DualCP,wimans,43,0.1,33.025,2.778
+DualCP,wimans,44,0.1,32.716,1.852
+DualCP+ER,3do,42,0.1,93.528,3.042
+DualCP+ER,3do,43,0.1,92.250,4.667
+DualCP+ER,3do,44,0.1,92.833,3.250
+DualCP+ER,widar,42,0.1,61.407,13.417
+DualCP+ER,widar,43,0.1,64.074,11.250
+DualCP+ER,widar,44,0.1,62.000,12.833
+DualCP+ER,wimans,42,0.1,35.494,-0.463
+DualCP+ER,wimans,43,0.1,33.025,2.315
+DualCP+ER,wimans,44,0.1,32.716,0.463
+ER,3do,42,,95.583,2.958
+ER,3do,43,,95.611,3.583
+ER,3do,44,,95.667,2.375
+ER,widar,42,,40.667,48.583
+ER,widar,43,,41.407,49.250
+ER,widar,44,,38.370,52.583
+ER,wimans,42,,32.099,1.852
+ER,wimans,43,,28.704,6.019
+ER,wimans,44,,32.407,1.389
+EWC,3do,42,10000.0,83.250,22.500
+EWC,3do,43,10000.0,82.556,23.417
+EWC,3do,44,10000.0,83.250,22.583
+EWC,widar,42,10000.0,31.259,16.417
+EWC,widar,43,10000.0,30.741,16.917
+EWC,widar,44,10000.0,31.778,14.917
+EWC,wimans,42,10000.0,29.630,2.315
+EWC,wimans,43,10000.0,26.235,4.167
+EWC,wimans,44,10000.0,30.247,1.389
+EWC+ER,3do,42,10000.0,95.556,2.917
+EWC+ER,3do,43,10000.0,95.472,3.750
+EWC+ER,3do,44,10000.0,95.556,2.750
+EWC+ER,widar,42,10000.0,35.259,11.417
+EWC+ER,widar,43,10000.0,33.037,14.000
+EWC+ER,widar,44,10000.0,35.333,11.167
+EWC+ER,wimans,42,10000.0,31.481,-1.389
+EWC+ER,wimans,43,10000.0,25.000,4.630
+EWC+ER,wimans,44,10000.0,30.556,1.389
+EdgeCL,3do,42,0.1,95.917,1.625
+EdgeCL,3do,43,0.1,96.222,1.125
+EdgeCL,3do,44,0.1,95.750,2.167
+EdgeCL,widar,42,0.1,30.444,51.333
+EdgeCL,widar,43,0.1,27.259,57.417
+EdgeCL,widar,44,0.1,28.296,55.083
+EdgeCL,wimans,42,0.1,29.938,5.093
+EdgeCL,wimans,43,0.1,33.642,3.704
+EdgeCL,wimans,44,0.1,32.099,4.630
+Fine-tuning,3do,42,,83.056,22.667
+Fine-tuning,3do,43,,82.111,23.875
+Fine-tuning,3do,44,,82.556,23.542
+Fine-tuning,widar,42,,34.815,56.417
+Fine-tuning,widar,43,,35.630,55.333
+Fine-tuning,widar,44,,36.667,54.333
+Fine-tuning,wimans,42,,33.025,3.241
+Fine-tuning,wimans,43,,26.543,8.333
+Fine-tuning,wimans,44,,30.247,6.481
+Joint training (non-continual reference),3do,42,,97.556,
+Joint training (non-continual reference),3do,43,,97.056,
+Joint training (non-continual reference),3do,44,,97.722,
+Joint training (non-continual reference),widar,42,,79.111,
+Joint training (non-continual reference),widar,43,,77.852,
+Joint training (non-continual reference),widar,44,,78.370,
+Joint training (non-continual reference),wimans,42,,33.642,
+Joint training (non-continual reference),wimans,43,,32.099,
+Joint training (non-continual reference),wimans,44,,32.716,
+LwF,3do,42,0.5,80.833,19.292
+LwF,3do,43,0.5,82.611,14.833
+LwF,3do,44,0.5,80.667,17.833
+LwF,widar,42,0.5,37.481,39.500
+LwF,widar,43,0.5,39.185,38.500
+LwF,widar,44,0.5,37.704,40.417
+LwF,wimans,42,0.5,30.247,-1.852
+LwF,wimans,43,0.5,26.852,4.630
+LwF,wimans,44,0.5,31.173,1.852
+LwF+ER,3do,42,0.5,90.472,-2.083
+LwF+ER,3do,43,0.5,90.889,-2.542
+LwF+ER,3do,44,0.5,91.639,-3.792
+LwF+ER,widar,42,0.5,43.926,29.917
+LwF+ER,widar,43,0.5,44.370,27.667
+LwF+ER,widar,44,0.5,42.296,30.500
+LwF+ER,wimans,42,0.5,29.630,-0.926
+LwF+ER,wimans,43,0.5,26.543,3.241
+LwF+ER,wimans,44,0.5,30.864,0.463
+MAS,3do,42,1.0,82.250,13.542
+MAS,3do,43,1.0,83.000,12.417
+MAS,3do,44,1.0,81.694,12.750
+MAS,widar,42,1.0,33.407,14.083
+MAS,widar,43,1.0,32.296,15.583
+MAS,widar,44,1.0,31.481,16.000
+MAS,wimans,42,1.0,30.556,0.000
+MAS,wimans,43,1.0,28.086,4.630
+MAS,wimans,44,1.0,30.864,0.000
+MAS+ER,3do,42,0.1,90.500,6.333
+MAS+ER,3do,43,0.1,91.083,6.750
+MAS+ER,3do,44,0.1,89.361,6.042
+MAS+ER,widar,42,0.1,41.556,28.917
+MAS+ER,widar,43,0.1,44.667,27.250
+MAS+ER,widar,44,0.1,41.778,29.500
+MAS+ER,wimans,42,0.1,31.173,0.926
+MAS+ER,wimans,43,0.1,28.395,3.704
+MAS+ER,wimans,44,0.1,31.173,0.926
+SI,3do,42,10.0,86.722,16.583
+SI,3do,43,10.0,87.250,15.042
+SI,3do,44,10.0,85.944,16.375
+SI,widar,42,10.0,38.296,46.417
+SI,widar,43,10.0,38.519,47.333
+SI,widar,44,10.0,40.296,46.167
+SI,wimans,42,10.0,32.716,2.778
+SI,wimans,43,10.0,26.543,9.722
+SI,wimans,44,10.0,30.247,6.019
+SI+ER,3do,42,1.0,95.222,3.292
+SI+ER,3do,43,1.0,94.861,4.292
+SI+ER,3do,44,1.0,95.333,2.792
+SI+ER,widar,42,1.0,41.926,47.333
+SI+ER,widar,43,1.0,42.963,46.667
+SI+ER,widar,44,1.0,40.222,49.917
+SI+ER,wimans,42,1.0,31.790,2.315
+SI+ER,wimans,43,1.0,29.012,5.556
+SI+ER,wimans,44,1.0,32.099,1.852
+VanillaCP,3do,42,1.0,89.639,10.875
+VanillaCP,3do,43,1.0,89.194,11.375
+VanillaCP,3do,44,1.0,89.278,11.333
+VanillaCP,widar,42,1.0,62.370,13.833
+VanillaCP,widar,43,1.0,62.815,13.667
+VanillaCP,widar,44,1.0,61.852,14.167
+VanillaCP,wimans,42,1.0,31.790,1.389
+VanillaCP,wimans,43,1.0,32.407,0.926
+VanillaCP,wimans,44,1.0,30.556,0.926
+VanillaCP+ER,3do,42,1.0,93.889,3.375
+VanillaCP+ER,3do,43,1.0,93.611,3.667
+VanillaCP+ER,3do,44,1.0,93.806,3.167
+VanillaCP+ER,widar,42,1.0,62.222,12.500
+VanillaCP+ER,widar,43,1.0,63.630,11.500
+VanillaCP+ER,widar,44,1.0,62.815,12.000
+VanillaCP+ER,wimans,42,1.0,32.407,0.463
+VanillaCP+ER,wimans,43,1.0,32.716,2.778
+VanillaCP+ER,wimans,44,1.0,32.716,0.926
+"WiMoT (amp_full, primary)",3do,42,,97.472,0.458
+"WiMoT (amp_full, primary)",3do,43,,97.167,0.708
+"WiMoT (amp_full, primary)",3do,44,,96.917,0.583
+"WiMoT (amp_full, primary)",widar,42,,81.556,1.750
+"WiMoT (amp_full, primary)",widar,43,,81.778,1.333
+"WiMoT (amp_full, primary)",widar,44,,82.889,1.500
+"WiMoT (amp_full, primary)",wimans,42,,38.580,3.704
+"WiMoT (amp_full, primary)",wimans,43,,38.580,1.852
+"WiMoT (amp_full, primary)",wimans,44,,34.568,5.093
+WiMoT (amp_only),3do,42,,95.389,0.667
+WiMoT (amp_only),3do,43,,95.917,0.208
+WiMoT (amp_only),3do,44,,95.861,0.583
+WiMoT (amp_only),widar,42,,73.333,1.417
+WiMoT (amp_only),widar,43,,72.963,0.917
+WiMoT (amp_only),widar,44,,72.963,1.667
+WiMoT (amp_only),wimans,42,,33.642,4.167
+WiMoT (amp_only),wimans,43,,35.494,-3.704
+WiMoT (amp_only),wimans,44,,31.790,0.463
